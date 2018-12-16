@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/home_icon"
+        android:title="@string/home"/>
+    <item
+        android:id="@+id/navigation_my_location"
+        android:icon="@drawable/mylocation"
+        android:title="@string/mylocation" />
+    <item
+        android:id="@+id/navigation_add_camera"
+        android:icon="@drawable/camera"
+        android:title="@string/addcamera" />
+
+    <item
+        android:id="@+id/navigation_night_mode"
+        android:icon="@drawable/moon_icon"
+        android:title="@string/nightmode" />
+    <item
+        android:id="@+id/navigation_mores"
+        android:icon="@drawable/more"
+        android:title="@string/more" />
+</menu>

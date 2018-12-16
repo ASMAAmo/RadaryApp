@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://F:\Ali\Eng Ali\My Freelance working\RadaryApp\My Freelance working.iml" filepath="F:\Ali\Eng Ali\My Freelance working\RadaryApp\My Freelance working.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RadaryApp.iml" filepath="$PROJECT_DIR$/RadaryApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+    </modules>
+  </component>
+</project>
