@@ -5,7 +5,10 @@
     <string name="addcamera">AddCamera</string>
     <string name="nightmode">NightMode</string>
     <string name="more">More</string>
+    <string name="slide1">With Radary you are always safe</string>
+    <string name="slide2">Start your Trip without worrying</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <string name="skip">Skip</string>
 </resources>

@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/home_icon"
+        android:icon="@drawable/ic_home"
         android:title="@string/home"/>
     <item
         android:id="@+id/navigation_my_location"
-        android:icon="@drawable/mylocation"
+        android:icon="@drawable/ic_planet_earth"
         android:title="@string/mylocation" />
     <item
         android:id="@+id/navigation_add_camera"
-        android:icon="@drawable/camera"
+        android:icon="@drawable/ic_camera"
         android:title="@string/addcamera" />
 
     <item
         android:id="@+id/navigation_night_mode"
-        android:icon="@drawable/moon_icon"
+        android:icon="@drawable/ic_moon"
         android:title="@string/nightmode" />
     <item
         android:id="@+id/navigation_mores"
-        android:icon="@drawable/more"
+        android:icon="@drawable/ic_more"
         android:title="@string/more" />
 </menu>

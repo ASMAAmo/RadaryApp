@@ -82,13 +82,6 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
 
 
 
-
-
-
-
-
-
-
     @Override
     protected void onResume() {
         super.onResume();
