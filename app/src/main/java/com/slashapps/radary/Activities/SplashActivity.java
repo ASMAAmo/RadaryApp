@@ -1,10 +1,11 @@
 package com.slashapps.radary.Activities;
 
 import android.content.Intent;
-import android.graphics.Color;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -59,8 +60,11 @@ public class SplashActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-
+    }
 
     private class SliderTimer extends TimerTask {
 

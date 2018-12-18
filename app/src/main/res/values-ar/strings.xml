@@ -31,4 +31,13 @@
     <string name="add_camera">إضافة كاميرا</string>
     <string name="cancel">إلغاء</string>
     <string name="selectlang">أختر اللغة</string>
+    <string name="no_places">لاتوجد أماكن</string>
+    <string name="gpsturnoff">خاصية تحديد المواقع مغلقه</string>
+    <string name="turnon">تشغيل</string>
+    <string name="sorry_you_seem_to_be_offline">نأسف .. يبدو أنك غير متصل بالإنترنت</string>
+    <string name="please_make_sure_you_are_connected_to_the_internet_and_try_again">نرجو التأكد من أنك متصل بالإنترنت وإعادة المحاولة مره أخرى</string>
+    <string name="try_again">إعادة المحاولة</string>
+    <string name="exit">خروج ؟</string>
+    <string name="yes">نعم</string>
+
 </resources>

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.slashapps.radary.Activities.Aboutactivity;
 import com.slashapps.radary.Activities.ContactActivity;
 import com.slashapps.radary.Activities.Loginactivity;
@@ -48,21 +49,19 @@ public class MoreFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.rel_about:
-                startActivity(new Intent(getActivity(),Aboutactivity.class));
+                startActivity(new Intent(getActivity(), Aboutactivity.class));
                 break;
             case R.id.rel_contact:
-                startActivity(new Intent(getActivity(),ContactActivity.class));
+                startActivity(new Intent(getActivity(), ContactActivity.class));
                 break;
             case R.id.rel_login:
-                startActivity(new Intent(getActivity(),Loginactivity.class));
+                startActivity(new Intent(getActivity(), Loginactivity.class));
                 break;
 
             case R.id.rel_lang:
-                AlertDialog.Builder adb = new AlertDialog.Builder(getContext());
-                CharSequence items[] = new CharSequence[] {"عربي","ENGLISH"};
-
+                CharSequence items[] = new CharSequence[]{"عربي", "ENGLISH"};
                 int selectedLang = 0;
                 String local = Locale.getDefault().getDisplayLanguage();
                 if (local.equalsIgnoreCase("English")) {
@@ -70,32 +69,25 @@ public class MoreFragment extends Fragment implements View.OnClickListener{
                 } else {
                     selectedLang = 0;
                 }
-                adb.setSingleChoiceItems(items, selectedLang, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface d, int n) {
-
-
-
-
-                        switch (n){
-                            case 0 :
-                                LocaleUtils.initialize(getContext(),LocaleUtils.ARABIC);
-                                restartApp(getContext());
-                                break;
-                            case 1 :
-                                LocaleUtils.initialize(getContext(),LocaleUtils.ENGLISH);
-                                restartApp(getContext());
-                                break;
-                        }
-                    }
-
-                });
-
-                adb.setNegativeButton(getResources().getString(R.string.cancel), null);
-                adb.setTitle(getResources().getString(R.string.selectlang));
-                adb.show();
-                break;
+                new MaterialDialog.Builder(getContext())
+                        .title(getResources().getString(R.string.app_name))
+                        .items(items)
+                        .itemsCallbackSingleChoice(selectedLang, new MaterialDialog.ListCallbackSingleChoice() {
+                            @Override
+                            public boolean onSelection(MaterialDialog dialog, View itemView, int which, CharSequence text) {
+                                switch (which) {
+                                    case 0:
+                                        LocaleUtils.initialize(getContext(), LocaleUtils.ARABIC);
+                                        restartApp(getContext());
+                                        break;
+                                    case 1:
+                                        LocaleUtils.initialize(getContext(), LocaleUtils.ENGLISH);
+                                        restartApp(getContext());
+                                        break;
+                                }
+                                return false;
+                            }
+                        }).positiveText(R.string.selectlang).show();
         }
     }
 }

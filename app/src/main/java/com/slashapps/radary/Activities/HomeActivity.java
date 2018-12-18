@@ -1,14 +1,20 @@
 package com.slashapps.radary.Activities;
 
+
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
+
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.slashapps.radary.Components.BottomNavigation;
 import com.slashapps.radary.Fragments.AddCamFragment;
 import com.slashapps.radary.Fragments.HomeFragment;
@@ -132,5 +138,26 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
             return true;
         }
         return false;
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        if (pageIndex == 3 || pageIndex == 2|| pageIndex==1 || pageIndex==4) {
+            navigation.setSelectedItemId(R.id.navigation_home);
+        } else {
+            new MaterialDialog.Builder(this)
+                    .title(R.string.app_name)
+                    .content(R.string.exit)
+                    .positiveText(R.string.yes)
+                    .negativeText(R.string.cancel)
+                    .onPositive(new MaterialDialog.SingleButtonCallback() {
+                        @Override
+                        public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                            finish();
+                        }
+                    })
+                    .show();
+        }
     }
 }

@@ -30,4 +30,12 @@
     <string name="add_camera">Add Camera</string>
     <string name="cancel">Cancel</string>
     <string name="selectlang">Chose Language</string>
+    <string name="no_places">No Places</string>
+    <string name="gpsturnoff">Location Service Not Working </string>
+    <string name="turnon">Turn On</string>
+    <string name="sorry_you_seem_to_be_offline">Sorry .. you seem to be offline</string>
+    <string name="please_make_sure_you_are_connected_to_the_internet_and_try_again">Please make sure you are connected to the Internet and try again</string>
+    <string name="try_again">Try Again</string>
+    <string name="exit">Exit ?</string>
+    <string name="yes">Yes</string>
 </resources>
