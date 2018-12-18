@@ -1,13 +1,205 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context="com.slashapps.radary.Fragments.MoreFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/imglogo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/log" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_below="@+id/imglogo"
+        android:layout_marginTop="40dp"
+        android:background="@color/lightgrey"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.andexert.library.RippleView
+                android:id="@+id/rel_lang"
+                rv_centered="true"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+
+                android:background="@color/lightgrey"
+                android:padding="10dp">
+
+                <ConstantClasss.Custom_Textview
+                    android:id="@+id/txt_lang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="15dp"
+                    android:drawablePadding="10dp"
+                    android:text="@string/lang"
+                    android:textColor="@color/darkgrey"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </com.andexert.library.RippleView>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rel_home"
+            android:background="@color/grey" />
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.andexert.library.RippleView
+                android:id="@+id/rel_contact"
+                rv_centered="true"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+
+                android:background="@color/lightgrey"
+                android:padding="10dp">
+
+                <ConstantClasss.Custom_Textview
+                    android:id="@+id/txt_contact"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="15dp"
+                    android:drawablePadding="10dp"
+                    android:text="@string/contact"
+                    android:textColor="@color/darkgrey"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </com.andexert.library.RippleView>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rel_home"
+            android:background="@color/grey" />
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.andexert.library.RippleView
+                android:id="@+id/rel_about"
+                rv_centered="true"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+
+                android:background="@color/lightgrey"
+                android:padding="10dp">
+
+                <ConstantClasss.Custom_Textview
+                    android:id="@+id/txt_about"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="15dp"
+                    android:drawablePadding="10dp"
+                    android:text="@string/about"
+                    android:textColor="@color/darkgrey"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </com.andexert.library.RippleView>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey" />
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.andexert.library.RippleView
+                android:id="@+id/rel_login"
+                rv_centered="true"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+
+                android:background="@color/lightgrey"
+                android:padding="10dp">
+
+                <ConstantClasss.Custom_Textview
+                    android:id="@+id/txt_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="15dp"
+
+                    android:drawablePadding="10dp"
+                    android:text="@string/login"
+                    android:textColor="@color/darkgrey"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </com.andexert.library.RippleView>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey" />
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <com.andexert.library.RippleView
+                android:id="@+id/rel_logout"
+                rv_centered="true"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentLeft="true"
+
+                android:background="@color/lightgrey"
+                android:padding="10dp">
+
+                <ConstantClasss.Custom_Textview
+                    android:id="@+id/txt_logout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="15dp"
+                    android:drawablePadding="10dp"
+                    android:text="@string/logout"
+                    android:textColor="@color/darkgrey"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </com.andexert.library.RippleView>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/grey" />
+    </LinearLayout>
+
+</RelativeLayout>
