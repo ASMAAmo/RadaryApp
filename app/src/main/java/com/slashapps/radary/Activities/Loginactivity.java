@@ -19,14 +19,16 @@ public class Loginactivity extends AppCompatActivity implements View.OnClickList
     private void findViewid() {
         ripple_login=(com.andexert.library.RippleView)findViewById(R.id.rel_login);
         ripple_register=(com.andexert.library.RippleView)findViewById(R.id.rel_creatacc);
+        ripple_login.setOnClickListener(this);
+        ripple_register.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.rel_creatacc:
-                startActivity(new Intent(this,Register.class));
+            case R.id.rel_creatacc :
+                startActivity(new Intent(Loginactivity.this,Register.class));
                 break;
         }
     }

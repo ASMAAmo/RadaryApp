@@ -1,10 +1,12 @@
 package com.slashapps.radary.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +14,12 @@ import android.view.ViewGroup;
 import com.slashapps.radary.Activities.Aboutactivity;
 import com.slashapps.radary.Activities.ContactActivity;
 import com.slashapps.radary.Activities.Loginactivity;
+import com.slashapps.radary.ConstantClasss.LocaleUtils;
 import com.slashapps.radary.R;
+
+import java.util.Locale;
+
+import static com.slashapps.radary.Activities.BaseActivity.restartApp;
 
 
 public class MoreFragment extends Fragment implements View.OnClickListener{
@@ -50,6 +57,44 @@ public class MoreFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.rel_login:
                 startActivity(new Intent(getActivity(),Loginactivity.class));
+                break;
+
+            case R.id.rel_lang:
+                AlertDialog.Builder adb = new AlertDialog.Builder(getContext());
+                CharSequence items[] = new CharSequence[] {"عربي","ENGLISH"};
+
+                int selectedLang = 0;
+                String local = Locale.getDefault().getDisplayLanguage();
+                if (local.equalsIgnoreCase("English")) {
+                    selectedLang = 1;
+                } else {
+                    selectedLang = 0;
+                }
+                adb.setSingleChoiceItems(items, selectedLang, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface d, int n) {
+
+
+
+
+                        switch (n){
+                            case 0 :
+                                LocaleUtils.initialize(getContext(),LocaleUtils.ARABIC);
+                                restartApp(getContext());
+                                break;
+                            case 1 :
+                                LocaleUtils.initialize(getContext(),LocaleUtils.ENGLISH);
+                                restartApp(getContext());
+                                break;
+                        }
+                    }
+
+                });
+
+                adb.setNegativeButton(getResources().getString(R.string.cancel), null);
+                adb.setTitle(getResources().getString(R.string.selectlang));
+                adb.show();
                 break;
         }
     }

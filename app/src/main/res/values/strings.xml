@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Radary</string>
     <string name="home">Home</string>
-    <string name="mylocation">MyLocation</string>
+    <string name="mylocation">Added Locations</string>
     <string name="addcamera">AddCamera</string>
     <string name="nightmode">NightMode</string>
     <string name="more">More</string>
@@ -18,4 +18,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="skip">Skip</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="message">Message</string>
+    <string name="username">Username</string>
+    <string name="create_account">Create Account</string>
+    <string name="have_account">Have Account</string>
+    <string name="latitude">Latitude ...</string>
+    <string name="longitude">Longitude ...</string>
+    <string name="camera_type">Camera Type</string>
+    <string name="add_camera">Add Camera</string>
+    <string name="cancel">Cancel</string>
+    <string name="selectlang">Chose Language</string>
 </resources>

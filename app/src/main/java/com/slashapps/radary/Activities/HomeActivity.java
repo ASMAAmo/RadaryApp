@@ -3,17 +3,17 @@ package com.slashapps.radary.Activities;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.slashapps.radary.Components.BottomNavigation;
 import com.slashapps.radary.Fragments.AddCamFragment;
 import com.slashapps.radary.Fragments.HomeFragment;
 import com.slashapps.radary.Fragments.MoreFragment;
-import com.slashapps.radary.Fragments.MyLocationFragment;
+import com.slashapps.radary.Fragments.AddedLocationsFragment;
 import com.slashapps.radary.Fragments.NightModeFragment;
 import com.slashapps.radary.R;
 
@@ -27,13 +27,13 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
     private static final int MOREPAGE=4;
     private int pageIndex = 0;
     private TextView title;
-
+    public static Toolbar myToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        Toolbar myToolbar = findViewById(R.id.toolbar);
+         myToolbar = findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
         navigation = findViewById(R.id.navigation);
         title = findViewById(R.id.title);
@@ -46,24 +46,27 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         FragmentTransaction transaction = getTransaction();
         switch (page) {
             case HOME:
-               title.setText(this.getResources().getString(R.string.home));
+                myToolbar.setVisibility(View.VISIBLE);
+                title.setText(this.getResources().getString(R.string.home));
                 transaction.replace(R.id.content, new HomeFragment());
                 transaction.commit();
                 pageIndex = 0;
                 break;
             case MYLOCATION:
-               title.setText(this.getResources().getString(R.string.mylocation));
-                transaction.replace(R.id.content, new MyLocationFragment());
+                myToolbar.setVisibility(View.VISIBLE);
+                title.setText(this.getResources().getString(R.string.mylocation));
+                transaction.replace(R.id.content, new AddedLocationsFragment());
                 transaction.commit();
                 pageIndex = 1;
                 break;
             case ADDCAMERA:
-                title.setText(this.getResources().getString(R.string.addcamera));
+                myToolbar.setVisibility(View.GONE);
                 transaction.replace(R.id.content, new AddCamFragment());
                 transaction.commit();
                 pageIndex = 2;
                 break;
             case NIGHTMODE:
+                myToolbar.setVisibility(View.VISIBLE);
                 title.setText(this.getResources().getString(R.string.nightmode));
                 transaction.replace(R.id.content, new NightModeFragment());
                 transaction.commit();
@@ -71,6 +74,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
                 break;
 
             case MOREPAGE:
+                myToolbar.setVisibility(View.VISIBLE);
                 title.setText(this.getResources().getString(R.string.more));
                 transaction.replace(R.id.content, new MoreFragment());
                 transaction.commit();

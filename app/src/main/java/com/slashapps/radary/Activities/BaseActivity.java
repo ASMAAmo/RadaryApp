@@ -1,6 +1,9 @@
 package com.slashapps.radary.Activities;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.support.annotation.Nullable;
@@ -57,5 +60,14 @@ public class BaseActivity extends AppCompatActivity {
         transaction.setCustomAnimations(R.anim.abc_fade_in,
                 R.anim.abc_fade_out);
         return transaction;
+    }
+
+
+    public static void restartApp(Context context){
+        Intent settingIntent = context.getPackageManager().getLaunchIntentForPackage(context.getPackageName());
+        settingIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        settingIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(settingIntent);
+        ((Activity)context).finish();
     }
 }

@@ -12,7 +12,7 @@ import com.slashapps.radary.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MyLocationFragment extends Fragment {
+public class AddedLocationsFragment extends Fragment {
 
 
 
