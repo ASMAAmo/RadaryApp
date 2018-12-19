@@ -29,6 +29,11 @@
         <activity android:name=".Activities.Loginactivity" />
         <activity android:name=".Activities.Register" />
         <activity android:name=".Activities.NoConnectionActivity"></activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBKewiYDveO3exJOfGzVS1fH4HaFSl5jcM" />
+
+
     </application>
 
 </manifest>
