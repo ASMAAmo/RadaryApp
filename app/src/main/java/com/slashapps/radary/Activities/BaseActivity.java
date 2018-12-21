@@ -35,7 +35,7 @@ import com.slashapps.radary.R;
 
 public class BaseActivity extends AppCompatActivity {
 
-    //ff
+
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
