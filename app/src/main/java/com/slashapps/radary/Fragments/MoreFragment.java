@@ -44,6 +44,7 @@ public class MoreFragment extends Fragment implements View.OnClickListener{
         rel_contact.setOnClickListener(this);
         rel_lang.setOnClickListener(this);
         ripple_login.setOnClickListener(this);
+        ripple_about.setOnClickListener(this);
     }
 
 

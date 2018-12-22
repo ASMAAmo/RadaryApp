@@ -7,10 +7,34 @@
     android:layout_height="match_parent"
     tools:context="com.slashapps.radary.Activities.Loginactivity">
     <RelativeLayout
+        android:id="@+id/relback"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:layout_height="50dp">
+        <ConstantClasss.Custom_Textview
+            android:layout_width="wrap_content"
+            android:text="@string/login"
+            android:layout_centerInParent="true"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:layout_height="wrap_content" />
+        <!--<ImageView
+            android:id="@+id/imgback"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ic_back" />-->
+    </RelativeLayout>
+    <RelativeLayout
         android:id="@+id/rellog"
         android:layout_width="match_parent"
+        android:layout_below="@+id/relback"
         android:background="@android:color/white"
-        android:layout_height="230dp">
+        android:layout_height="200dp">
         <ImageView
             android:id="@+id/imglogo"
             android:layout_width="100dp"
@@ -35,6 +59,7 @@
         android:singleLine="true"
         android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
+        android:drawablePadding="10dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/border_shaplogindark"
         android:layout_gravity="center"
