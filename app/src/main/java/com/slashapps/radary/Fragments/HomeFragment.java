@@ -121,11 +121,14 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
                         if (task.isSuccessful()) {
                             // Set the map's camera position to the current location of the device.
                             Location location = task.getResult();
-                            LatLng currentLatLng = new LatLng(location.getLatitude(),
-                                    location.getLongitude());
-                            CameraUpdate update = CameraUpdateFactory.newLatLngZoom(currentLatLng,
-                                    15);
-                            map.moveCamera(update);
+                            if(location!=null){
+                                LatLng currentLatLng = new LatLng(location.getLatitude(),
+                                        location.getLongitude());
+                                CameraUpdate update = CameraUpdateFactory.newLatLngZoom(currentLatLng,
+                                        15);
+                                map.moveCamera(update);
+                            }
+
                         }
                     }
                 });

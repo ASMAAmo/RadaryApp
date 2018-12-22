@@ -12,22 +12,20 @@
         android:layout_width="match_parent"
             android:background="@color/colorPrimary"
         android:layout_height="50dp">
-        <ConstantClasss.Custom_Textview
-            android:layout_width="wrap_content"
-            android:text="@string/contact"
-            android:layout_centerInParent="true"
-            android:textColor="@android:color/white"
-            android:textSize="15sp"
-            android:layout_height="wrap_content" />
-       <!-- <ImageView
-           android:id="@+id/imgback"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_centerHorizontal="true"
-           android:layout_alignParentLeft="true"
-           android:layout_marginLeft="15dp"
-           android:layout_centerInParent="true"
-           android:background="@drawable/ic_back" />-->
+        <include layout="@layout/custom_toolbar"
+            android:id="@+id/toolbar"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+            <ConstantClasss.Custom_Textview
+                android:layout_width="wrap_content"
+                android:text="@string/contact"
+                android:layout_centerInParent="true"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:layout_height="wrap_content" />
+        </include>
+
+
     </RelativeLayout>
     <ImageView
         android:id="@+id/imglogo"
