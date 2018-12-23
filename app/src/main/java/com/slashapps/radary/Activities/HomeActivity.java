@@ -2,8 +2,10 @@ package com.slashapps.radary.Activities;
 
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 
@@ -32,6 +34,8 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
     private static final int NIGHTMODE = 3;
     private static final int MOREPAGE=4;
     private int pageIndex = 0;
+    public static String camLat="";
+    public static String camLng="";
     private TextView title;
     public static Toolbar myToolbar;
 
@@ -160,4 +164,6 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
                     .show();
         }
     }
+
+
 }

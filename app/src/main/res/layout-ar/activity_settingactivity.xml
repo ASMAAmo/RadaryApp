@@ -46,15 +46,16 @@
         android:drawablePadding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
     <ImageView
         android:id="@+id/ic_checken"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/en"
-        android:visibility="gone"
-        android:layout_alignParentRight="true"
-        android:layout_height="wrap_content" />
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_check"
+        android:visibility="gone" />
 </RelativeLayout>
     <RelativeLayout
         android:id="@+id/rel_ar"
@@ -64,6 +65,17 @@
         android:background="@drawable/bordershaplang"
         android:layout_marginLeft="20dp"
         android:layout_height="50dp">
+
+        <ImageView
+            android:id="@+id/ic_checken2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_check"
+            android:visibility="gone" />
+
         <ConstantClasss.Custom_Textview
             android:text="@string/arabic"
             android:textStyle="bold"

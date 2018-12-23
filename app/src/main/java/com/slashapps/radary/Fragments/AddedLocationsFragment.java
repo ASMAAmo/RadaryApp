@@ -15,9 +15,8 @@ import android.widget.TextView;
 import com.slashapps.radary.Adapters.PlacesAdapter;
 import com.slashapps.radary.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+import static java.security.AccessController.getContext;
+
 public class AddedLocationsFragment extends Fragment {
 
 

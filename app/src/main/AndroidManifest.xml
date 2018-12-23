@@ -43,7 +43,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCS47HXWnYxTXM0xYepVc1Yd27S2xxfGfc" />
 
-        <activity android:name=".Activities.Settingactivity"></activity>
+        <activity android:name=".Activities.Settingactivity" />
+        <activity
+            android:name=".Activities.CamLocationActivity"></activity>
     </application>
 
 </manifest>

@@ -12,7 +12,7 @@
     <item
         android:id="@+id/navigation_add_camera"
         android:icon="@drawable/ic_camera"
-        android:title="@string/addcamera" />
+        android:title="@string/addcamera"/>
 
     <item
         android:id="@+id/navigation_night_mode"

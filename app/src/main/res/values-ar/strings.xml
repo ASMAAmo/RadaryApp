@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ردارى</string>
     <string name="home">الرئيسية</string>
-    <string name="mylocation">الأماكن المضافه</string>
+    <string name="mylocation">مواقعى</string>
     <string name="addcamera">إضافة كاميرا</string>
     <string name="nightmode">الوضع الليلي</string>
     <string name="more">القائمة الجانبيه</string>
@@ -43,5 +43,7 @@
     <string name="try_again">إعادة المحاولة</string>
     <string name="exit">خروج ؟</string>
     <string name="yes">نعم</string>
+    <string name="search">بحث</string>
+    <string name="select_cam_location">حدد مكان الكاميرا</string>
 
 </resources>

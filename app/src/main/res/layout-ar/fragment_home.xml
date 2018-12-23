@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.slashapps.radary.Fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -9,8 +10,14 @@
         android:id="@+id/relsearch"
         android:layout_width="match_parent"
         android:background="@color/grey"
-        android:layout_height="50dp"
-      />
+        android:layout_height="50dp">
+        <android.support.v7.widget.SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:queryHint="@string/search">
+        </android.support.v7.widget.SearchView>
+    </RelativeLayout>
     <fragment
         xmlns:map="http://schemas.android.com/apk/res-auto"
         android:id="@+id/map"
