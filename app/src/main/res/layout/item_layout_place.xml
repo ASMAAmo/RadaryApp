@@ -32,17 +32,16 @@
             android:gravity="fill_vertical"
             android:text="30.25558 , 31,5588"
             android:textAlignment="viewStart"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/place_name_tv"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="fill_vertical"
-            android:text="PlaceName"
-            android:textAlignment="viewStart"
-            android:textColor="@color/colorPrimary"
-            android:textSize="18sp" />
+            android:textSize="13sp" />
     </LinearLayout>
+    <TextView
+        android:id="@+id/place_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/placesname"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="13sp" />
 </RelativeLayout>

@@ -6,9 +6,11 @@
     <string name="nightmode">الوضع الليلي</string>
     <string name="more">القائمة الجانبيه</string>
     <string name="login">تسجيل الدخول</string>
+    <string name="placesname">إسم المكان</string>
     <string name="logout">تسجيل الخروج</string>
     <string name="about">عن رداري</string>
     <string name="contact">تواصل معنا</string>
+    <string name="chooselang">إختر اللغه</string>
     <string name="lang">اللغة</string>
     <string name="CreatAccount">إنشاء حساب</string>
     <string name="send">إرسال</string>
@@ -21,8 +23,10 @@
     <string name="slide2">أبدأ رحلتك بدون قلق ..</string>
     <string name="email">البريد الإلكترونى</string>
     <string name="password">كلمة المرور</string>
-    <string name="message">نص الرسالة</string>
+    <string name="message">نص الرسالة...</string>
     <string name="username">أسم المستخدم</string>
+    <string name="english">English</string>
+    <string name="arabic">اللغه العربيه</string>
     <string name="create_account">إنشاء حساب</string>
     <string name="have_account">لديك حساب</string>
     <string name="latitude">دائرة عرض ...</string>

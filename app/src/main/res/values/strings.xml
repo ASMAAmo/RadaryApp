@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Radary</string>
     <string name="home">Home</string>
-    <string name="mylocation">Added Locations</string>
+    <string name="mylocation">My Places</string>
     <string name="addcamera">AddCamera</string>
     <string name="nightmode">NightMode</string>
     <string name="more">More</string>
@@ -9,7 +9,9 @@
     <string name="logout">Logout</string>
     <string name="about">About Radary</string>
     <string name="contact">Contact Us</string>
+    <string name="placesname">PlacesName</string>
     <string name="lang">Language</string>
+    <string name="chooselang">Choose Language</string>
     <string name="CreatAccount">Create Account</string>
     <string name="send">Send</string>
     <string name="slide1">With Radary you are always safe</string>
@@ -20,8 +22,10 @@
     <string name="skip">Skip</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
-    <string name="message">Message</string>
+    <string name="message">Message...</string>
     <string name="username">Username</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
     <string name="create_account">Create Account</string>
     <string name="have_account">Have Account</string>
     <string name="latitude">Latitude ...</string>

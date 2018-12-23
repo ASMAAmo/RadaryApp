@@ -7,11 +7,11 @@
 
     <ImageView
         android:id="@+id/imglogo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:background="@drawable/log" />
+        android:background="@drawable/logooo" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                     android:drawableStart="@drawable/ea"
                     android:text="@string/lang"
                     android:textColor="@color/darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="13dp"
                     android:textStyle="bold" />
             </com.andexert.library.RippleView>
 
@@ -83,7 +83,7 @@
                     android:drawableStart="@drawable/oldhandphone"
                     android:text="@string/contact"
                     android:textColor="@color/darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="13dp"
                     android:textStyle="bold" />
             </com.andexert.library.RippleView>
 
@@ -117,9 +117,10 @@
                     android:layout_centerVertical="true"
                     android:drawablePadding="10dp"
                     android:drawableStart="@drawable/info"
+
                     android:text="@string/about"
                     android:textColor="@color/darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="13dp"
                     android:textStyle="bold" />
             </com.andexert.library.RippleView>
 
@@ -155,7 +156,7 @@
                     android:drawableStart="@drawable/logoutsymbol"
                     android:text="@string/login"
                     android:textColor="@color/darkgrey"
-                    android:textSize="15dp"
+                    android:textSize="13dp"
                     android:textStyle="bold" />
             </com.andexert.library.RippleView>
 
@@ -164,6 +165,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
+            android:visibility="gone"
             android:background="@color/grey" />
         <RelativeLayout
             android:visibility="gone"

@@ -6,21 +6,20 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.afollestad.materialdialogs.MaterialDialog;
 import com.slashapps.radary.Activities.Aboutactivity;
 import com.slashapps.radary.Activities.ContactActivity;
 import com.slashapps.radary.Activities.Loginactivity;
+import com.slashapps.radary.Activities.Settingactivity;
 import com.slashapps.radary.ConstantClasss.LocaleUtils;
 import com.slashapps.radary.R;
 
 import java.util.Locale;
 
 import static com.slashapps.radary.Activities.BaseActivity.restartApp;
+
 
 
 public class MoreFragment extends Fragment implements View.OnClickListener{
@@ -53,16 +52,21 @@ public class MoreFragment extends Fragment implements View.OnClickListener{
         switch (v.getId()) {
             case R.id.rel_about:
                 startActivity(new Intent(getActivity(), Aboutactivity.class));
+                getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.rel_contact:
                 startActivity(new Intent(getActivity(), ContactActivity.class));
+                getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
             case R.id.rel_login:
                 startActivity(new Intent(getActivity(), Loginactivity.class));
+                getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                 break;
 
             case R.id.rel_lang:
-                CharSequence items[] = new CharSequence[]{"عربي", "ENGLISH"};
+                startActivity(new Intent(getActivity(),Settingactivity.class));
+                getActivity().overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+               /* CharSequence items[] = new CharSequence[]{"عربي", "ENGLISH"};
                 int selectedLang = 0;
                 String local = Locale.getDefault().getDisplayLanguage();
                 if (local.equalsIgnoreCase("English")) {
@@ -89,6 +93,9 @@ public class MoreFragment extends Fragment implements View.OnClickListener{
                                 return false;
                             }
                         }).positiveText(R.string.selectlang).show();
+        }*/
+
+
         }
     }
 }

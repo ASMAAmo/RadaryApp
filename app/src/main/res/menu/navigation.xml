@@ -6,7 +6,8 @@
         android:title="@string/home"/>
     <item
         android:id="@+id/navigation_my_location"
-        android:icon="@drawable/ic_planet_earth"
+        android:icon="@drawable/ic_pointer"
+
         android:title="@string/mylocation" />
     <item
         android:id="@+id/navigation_add_camera"

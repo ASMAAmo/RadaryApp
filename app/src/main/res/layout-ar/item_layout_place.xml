@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/place_layout"
+    android:layout_width="wrap_content"
+    android:layout_height="50dp">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="25dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="false"
+        android:padding="5dp"
+        app:srcCompat="@drawable/place_ico" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="false"
+        android:layout_centerInParent="true"
+        android:layout_toLeftOf="@+id/imageView2"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/lat_long_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="fill_vertical"
+            android:text="30.25558 , 31,5588"
+            android:textAlignment="viewStart"
+            android:textSize="13sp" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/place_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/placesname"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="13sp" />
+</RelativeLayout>

@@ -35,8 +35,8 @@ public class SplashActivity extends BaseActivity {
         skipBtn=findViewById(R.id.skip_btn);
 
         images = new ArrayList<>();
-        images.add(R.drawable.img_slider1);
-        images.add(R.drawable.imge_slider2);
+        images.add(R.drawable.slider_man);
+        images.add(R.drawable.icslider);
 
 
         textes = new ArrayList<>();
