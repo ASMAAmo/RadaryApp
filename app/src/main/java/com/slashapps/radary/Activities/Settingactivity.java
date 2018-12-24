@@ -14,7 +14,7 @@ import android.support.v7.widget.Toolbar;
 
 import java.util.Locale;
 
-public class Settingactivity extends AppCompatActivity implements View.OnClickListener{
+public class Settingactivity extends BaseActivity implements View.OnClickListener{
 RelativeLayout relen,rel_ar;
 ImageView en_checked;
 ImageView ar_checked;

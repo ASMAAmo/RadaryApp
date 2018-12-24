@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,14 +36,22 @@
                 android:background="@color/lightgrey"
                 android:padding="10dp">
 
-                <ConstantClasss.Custom_Textview
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    app:srcCompat="@drawable/ic_earth" />
+
+                <TextView
                     android:id="@+id/txt_lang"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/imageView5"
                     android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/ic_earth"
                     android:text="@string/lang"
                     android:textColor="@color/darkgrey"
                     android:textSize="13dp"
@@ -72,18 +81,26 @@
                 android:background="@color/lightgrey"
                 android:padding="10dp">
 
-                <ConstantClasss.Custom_Textview
+                <TextView
                     android:id="@+id/txt_contact"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignTop="@+id/imageView6"
+                    android:layout_toEndOf="@+id/imageView6"
                     android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/ic_local_phone_black_24dp"
                     android:text="@string/contact"
                     android:textColor="@color/darkgrey"
                     android:textSize="13dp"
                     android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    app:srcCompat="@drawable/ic_local_phone_black_24dp" />
             </com.andexert.library.RippleView>
 
         </RelativeLayout>
@@ -108,15 +125,21 @@
                 android:background="@color/lightgrey"
                 android:padding="10dp">
 
-                <ConstantClasss.Custom_Textview
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    app:srcCompat="@drawable/ic_info" />
+
+                <TextView
                     android:id="@+id/txt_about"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/ic_info"
+                    android:layout_alignParentBottom="true"
 
+                    android:layout_toEndOf="@+id/imageView8"
+                    android:drawablePadding="10dp"
                     android:text="@string/about"
                     android:textColor="@color/darkgrey"
                     android:textSize="13dp"
@@ -144,15 +167,20 @@
                 android:background="@color/lightgrey"
                 android:padding="10dp">
 
-                <ConstantClasss.Custom_Textview
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="10dp"
+                    app:srcCompat="@drawable/ic_log_out_symbol" />
+
+                <TextView
                     android:id="@+id/txt_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/imageView9"
                     android:drawablePadding="10dp"
-                    android:drawableStart="@drawable/ic_log_out_symbol"
                     android:text="@string/login"
                     android:textColor="@color/darkgrey"
                     android:textSize="13dp"
