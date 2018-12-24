@@ -84,7 +84,7 @@
         android:textColorHint="@android:color/white"
         android:textSize="13sp" />
 
-    <ConstantClasss.Custom_Textview
+    <TextView
         android:id="@+id/txt_forgetpass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
         android:layout_below="@+id/relmessage"
         android:padding="10dp">
 
-        <ConstantClasss.Custom_Textview
+        <TextView
             android:id="@+id/txt_ogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
         android:layout_alignParentBottom="true"
         android:padding="10dp">
 
-        <ConstantClasss.Custom_Textview
+        <TextView
             android:layout_width="wrap_content"
             android:text="@string/CreatAccount"
             android:layout_centerInParent="true"

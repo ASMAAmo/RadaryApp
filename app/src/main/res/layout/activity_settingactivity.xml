@@ -35,7 +35,7 @@
     android:background="@drawable/bordershaplang"
     android:layout_marginLeft="20dp"
     android:layout_height="50dp">
-    <ConstantClasss.Custom_Textview
+    <TextView
         android:text="@string/english"
         android:textStyle="bold"
         android:textSize="15sp"
@@ -65,7 +65,7 @@
         android:background="@drawable/bordershaplang"
         android:layout_marginLeft="20dp"
         android:layout_height="50dp">
-        <ConstantClasss.Custom_Textview
+        <TextView
             android:text="@string/arabic"
             android:textStyle="bold"
             android:textSize="15sp"
