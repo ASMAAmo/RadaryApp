@@ -15,14 +15,22 @@
         android:background="?attr/selectableItemBackground"
         android:orientation="horizontal">
 
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right" />
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:textSize="15sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="5dp"
+            android:textSize="13sp"
             android:textStyle="bold"
-            android:textColor="@color/darkgrey"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_weight="1"
             android:text="@string/skip" />
     </LinearLayout>

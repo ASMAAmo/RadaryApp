@@ -10,5 +10,6 @@
     <color name="zatony">#957f42</color>
     <color name="yello">#ffd63a</color>
     <color name="blue">#00477d</color>
+    <color name="greymenu">#c7c7c7</color>
     <color name="bluelogin">#0071b4</color>
 </resources>

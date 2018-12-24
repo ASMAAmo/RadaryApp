@@ -65,24 +65,24 @@
             android:hint="@string/camera_type"
             android:spinnerMode="dropdown"
             android:textAlignment="viewStart"
-            android:textColor="@color/colorPrimary"
+            android:textColor="@color/white"
             android:textSize="12sp" />
         </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/lin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_below="@+id/cam_layout_sp"
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/lat_input"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_alignStart="@+id/rel_login"
                 android:layout_below="@+id/input_email"
                 android:layout_gravity="center"
@@ -105,7 +105,7 @@
             <EditText
                 android:id="@+id/long_input"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_above="@+id/rel_login"
                 android:layout_gravity="center"
                 android:layout_marginLeft="2dp"
@@ -148,7 +148,7 @@
                 android:drawablePadding="10dp"
                 android:text="@string/add_camera"
                 android:textColor="@color/blue"
-                android:textSize="15dp"
+                android:textSize="13dp"
                 android:textStyle="bold" />
         </com.andexert.library.RippleView>
 
