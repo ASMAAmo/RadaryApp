@@ -37,11 +37,13 @@ public class SplashActivity extends BaseActivity {
         images = new ArrayList<>();
         images.add(R.drawable.slider_man);
         images.add(R.drawable.icslider);
+        images.add(R.drawable.map);
 
 
         textes = new ArrayList<>();
         textes.add(getResources().getString(R.string.slide1));
         textes.add(getResources().getString(R.string.slide2));
+        textes.add(getResources().getString(R.string.addcam));
 
 
         viewPager.setAdapter(new SliderAdapter(this, images, textes));

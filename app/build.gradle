@@ -37,6 +37,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api 'com.android.support.constraint:constraint-layout:1.1.2'
+
     //noinspection GradleCompatible
     api 'com.android.support:design:27.1.1'
     compile fileTree(dir: 'libs', include: ['*.jar'])
