@@ -25,11 +25,11 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.Vh> {
 
     @Override
     public void onBindViewHolder(@NonNull Vh holder, int position) {
-        if( position %2 == 1 ){
+       /* if( position %2 == 1 ){
             holder.view.setBackgroundColor(Color.LTGRAY);
         } else{
             holder.view.setBackgroundColor(Color.WHITE);
-        }
+        }*/
     }
 
     @Override

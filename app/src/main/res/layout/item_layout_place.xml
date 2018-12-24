@@ -44,4 +44,9 @@
         android:layout_centerInParent="true"
         android:textColor="@color/colorPrimary"
         android:textSize="13sp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/place_name_tv"
+        android:background="@color/grey"/>
 </RelativeLayout>
