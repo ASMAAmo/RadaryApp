@@ -1,6 +1,7 @@
 package com.slashapps.radary.Activities;
 
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,19 +12,26 @@ import android.os.Bundle;
 
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.gms.maps.MapView;
 import com.slashapps.radary.Components.BottomNavigation;
+import com.slashapps.radary.FirebaseHelpers.FireBaseDataBaseHelper;
 import com.slashapps.radary.Fragments.AddCamFragment;
 import com.slashapps.radary.Fragments.HomeFragment;
 import com.slashapps.radary.Fragments.MoreFragment;
 import com.slashapps.radary.Fragments.AddedLocationsFragment;
 import com.slashapps.radary.Fragments.NightModeFragment;
 import com.slashapps.radary.R;
+import com.slashapps.radary.UserSession.SessionHelper;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -48,6 +56,8 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         navigation = findViewById(R.id.navigation);
         title = findViewById(R.id.title);
         navigation.setSelectedItemId(R.id.navigation_home);
+
+        Log.e("Test Notification Token",SessionHelper.getNotificationsToken(HomeActivity.this));
     }
 
 
@@ -146,6 +156,17 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
 
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        Map <String,String> deviceInfo =new HashMap();
+        deviceInfo.put("Lat","");
+        deviceInfo.put("Long","");
+        deviceInfo.put("NotificationsToken",SessionHelper.getNotificationsToken(this));
+        deviceInfo.put("OS","Android");
+        registerDevice(this,deviceInfo);
+    }
+
+    @Override
     public void onBackPressed() {
         if (pageIndex == 3 || pageIndex == 2|| pageIndex==1 || pageIndex==4) {
             navigation.setSelectedItemId(R.id.navigation_home);
@@ -165,5 +186,16 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         }
     }
 
+
+
+    //Register device on real time data base
+    public static void registerDevice(Context context,Object data){
+        FireBaseDataBaseHelper.registerCurrentDevice(SessionHelper.getDeviceId(context),data);
+    }
+
+    //Update device on real time data base
+    public static void updateDevice(Context context, Map data){
+        FireBaseDataBaseHelper.updateDeviceInfo(SessionHelper.getDeviceId(context),data);
+    }
 
 }

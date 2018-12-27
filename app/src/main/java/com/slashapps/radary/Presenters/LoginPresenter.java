@@ -38,11 +38,10 @@ public class LoginPresenter {
                 .themeColor(Color.WHITE)
                 .fadeColor(Color.DKGRAY).build();
         dialog.show();
-//
+
         HashMap input = new HashMap();
         input.put("email",mail);
         input.put("password",password);
-        // Log.e("inpp", input + "");
         Constanturl.createService(Router.class).login(input).enqueue(new Callback<LoginModel>() {
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
@@ -55,9 +54,8 @@ public class LoginPresenter {
                     ;
                     // contactview.getContacts(model.getAbout());
                     // view.getProductdetails(model.getService());
-
-
                 } else {
+
 
                 }
 

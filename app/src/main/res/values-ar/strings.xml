@@ -48,5 +48,6 @@
     <string name="yes">نعم</string>
     <string name="search">بحث</string>
     <string name="select_cam_location">حدد مكان الكاميرا</string>
+    <string name="required">Required</string>
 
 </resources>

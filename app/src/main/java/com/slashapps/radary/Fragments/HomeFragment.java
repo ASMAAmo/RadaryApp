@@ -1,6 +1,7 @@
 package com.slashapps.radary.Fragments;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -33,8 +34,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.slashapps.radary.Activities.HomeActivity;
+import com.slashapps.radary.FirebaseHelpers.FireBaseDataBaseHelper;
 import com.slashapps.radary.R;
+import com.slashapps.radary.UserSession.SessionHelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import static com.slashapps.radary.Activities.HomeActivity.updateDevice;
 import static java.security.AccessController.getContext;
 
 
@@ -111,6 +119,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         // Zoom in the Google Map
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
 
+        Map<String,String> deviceInfo =new HashMap();
+        deviceInfo.put("Lat",location.getLatitude()+"");
+        deviceInfo.put("Long",location.getLongitude()+"");
+        updateDevice(mFusedLocationProviderClient.getApplicationContext(),deviceInfo);
     }
 
     @Override
@@ -147,6 +159,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
                                 CameraUpdate update = CameraUpdateFactory.newLatLngZoom(currentLatLng,
                                         15);
                                 map.moveCamera(update);
+                                Map<String,String> deviceInfo =new HashMap();
+                                deviceInfo.put("Lat",location.getLatitude()+"");
+                                deviceInfo.put("Long",location.getLongitude()+"");
+                                updateDevice(mFusedLocationProviderClient.getApplicationContext(),deviceInfo);
                             }
 
                         }
@@ -157,4 +173,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
             Log.e("Exception: %s", e.getMessage());
         }
     }
+
+
+
 }

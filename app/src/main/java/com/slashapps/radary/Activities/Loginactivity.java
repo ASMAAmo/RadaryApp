@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.slashapps.radary.Presenters.LoginPresenter;
 import com.slashapps.radary.R;
+import com.slashapps.radary.UserSession.SessionHelper;
 import com.slashapps.radary.ViewsInterfaces.LoginView;
 import com.slashapps.radary.WebService.Models.Data_login;
 
@@ -62,7 +63,6 @@ public class Loginactivity extends BaseActivity implements View.OnClickListener,
     public void login(Data_login data_login) {
         int userid= data_login.getUserId();
         String token = data_login.getUserToken();
-
-
+        SessionHelper.setUserSession(this,data_login);
     }
 }

@@ -49,11 +49,11 @@ EditText input_name,input_email,input_password;
                 break;
             case R.id.rel_signup:
                 if (input_name.getText().toString().equals("")){
-                    input_name.setError("required");
+                    input_name.setError(getString(R.string.required));
                 }else if (input_email.getText().toString().equals("")){
-                    input_email.setError("required");
+                    input_email.setError(getString(R.string.required));
                 }else if (input_password.getText().toString().equals("")){
-                    input_password.setError("required");
+                    input_password.setError(getString(R.string.required));
                 }else {
                     presenter.register(input_name.getText().toString(),input_email.getText().toString(),input_password.getText().toString());
                 }
@@ -63,6 +63,8 @@ EditText input_name,input_email,input_password;
 
     @Override
     public void register(Data_register data) {
-
+        if(data.getUserToken()!=null){
+            Register.this.finish();
+        }
     }
 }
