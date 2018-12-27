@@ -12,8 +12,11 @@
     <string name="placesname">PlacesName</string>
     <string name="lang">Language</string>
     <string name="chooselang">Choose Language</string>
+    <string name="registerdsuccess">Registration success</string>
     <string name="CreatAccount">Create Account</string>
     <string name="send">Send</string>
+    <string name="mailrequired"> Email Required</string>
+    <string name="passrequired">Password required</string>
     <string name="slide1">With Radary you are always safe</string>
     <string name="addcam">Add Cam and detect Location easily</string>
     <string name="slide2">Start your Trip without worrying</string>

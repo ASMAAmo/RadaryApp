@@ -5,5 +5,5 @@ package com.slashapps.radary.URLS;
  */
 
 public class BaseUrl {
-    public static final String URL="";
+    public static final String URL="http://2nobelprize.org/radary.com/";
 }

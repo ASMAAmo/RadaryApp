@@ -13,6 +13,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.firebase.geofire.GeoFire;
+import com.firebase.geofire.GeoLocation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -28,6 +31,8 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.slashapps.radary.R;
 
 import static java.security.AccessController.getContext;
@@ -39,6 +44,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
     GoogleApiClient mpiclients;
     Location mlastLocation;
     LocationRequest mLocationrequest;
+    GeoFire geoFire;
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
 
@@ -54,6 +60,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_home, container, false);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("path/to/geofire");
+        geoFire = new GeoFire(ref);
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
@@ -71,6 +79,17 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         mLocationrequest.setInterval(1000);
         mLocationrequest.setFastestInterval(1000);
         mLocationrequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        LocationServices.FusedLocationApi.requestLocationUpdates(mpiclients, mLocationrequest, HomeFragment.this);
     }
 
     @Override
@@ -88,6 +107,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         mlastLocation= location;
         LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
         map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+//        geoFire.setLocation("firebase-hq", new GeoLocation(location.getLatitude(), -location.getLongitude()));
         // Zoom in the Google Map
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
 

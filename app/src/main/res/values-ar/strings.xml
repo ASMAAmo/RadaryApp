@@ -12,11 +12,13 @@
     <string name="contact">تواصل معنا</string>
     <string name="chooselang">إختر اللغه</string>
     <string name="lang">اللغة</string>
+    <string name="registerdsuccess">تم تسجيل الدخول بنجاح</string>
     <string name="CreatAccount">إنشاء حساب</string>
     <string name="addcam">اضف كاميرا وحدد موقعها بكل سهوله</string>
     <string name="send">إرسال</string>
     <string name="forgetpass">نسيت كلمة المرور</string>
-
+    <string name="mailrequired"> البريد الإلكتروني مطلوب</string>
+    <string name="passrequired"> required</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="skip">تخطى</string>
