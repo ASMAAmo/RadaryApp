@@ -11,7 +11,10 @@
     <string name="contact">Contact Us</string>
     <string name="placesname">PlacesName</string>
     <string name="lang">Language</string>
+    <string name="verifcationcodesent">Code sent to mail </string>
+    <string name="newpass">Activation key</string>
     <string name="chooselang">Choose Language</string>
+    <string name="passchanged">Password changed Successfully</string>
     <string name="registerdsuccess">Registration success</string>
     <string name="CreatAccount">Create Account</string>
     <string name="send">Send</string>
