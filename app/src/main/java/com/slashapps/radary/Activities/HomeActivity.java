@@ -41,7 +41,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
     private static final int ADDCAMERA = 2;
     private static final int NIGHTMODE = 3;
     private static final int MOREPAGE=4;
-    private int pageIndex = 0;
+    public static int pageIndex = 0;
     public static String camLat="";
     public static String camLng="";
     private TextView title;
@@ -86,11 +86,11 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
                 pageIndex = 2;
                 break;
             case NIGHTMODE:
+                pageIndex = 3;
                 myToolbar.setVisibility(View.VISIBLE);
                 title.setText(this.getResources().getString(R.string.nightmode));
-                transaction.replace(R.id.content, new NightModeFragment());
+                transaction.replace(R.id.content, new HomeFragment());
                 transaction.commit();
-                pageIndex = 3;
                 break;
 
             case MOREPAGE:
@@ -121,7 +121,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
                 navigation.setSelectedItemId(R.id.navigation_add_camera);
                 break;
             case 3:
-                navigation.setSelectedItemId(R.id.navigation_night_mode);
+                navigation.setSelectedItemId(R.id.navigation_home);
                 break;
             case 4:
                 navigation.setSelectedItemId(R.id.navigation_mores);
@@ -137,18 +137,23 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         int id = item.getItemId();
         if (id == R.id.navigation_home) {
             switchToPage(HOME);
+            pageIndex=0;
             return true;
         } else if (id == R.id.navigation_my_location) {
             switchToPage(MYLOCATION);
+            pageIndex=1;
             return true;
         } else if (id == R.id.navigation_add_camera) {
             switchToPage(ADDCAMERA);
+            pageIndex=2;
             return true;
         } else if (id == R.id.navigation_night_mode) {
-            switchToPage(NIGHTMODE);
+            switchToPage(HOME);
+            pageIndex=3;
             return true;
         }else if (id == R.id.navigation_mores){
             switchToPage(MOREPAGE);
+            pageIndex=4;
             return true;
         }
         return false;

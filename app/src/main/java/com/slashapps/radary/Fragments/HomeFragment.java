@@ -3,7 +3,9 @@ package com.slashapps.radary.Fragments;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
@@ -30,6 +32,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -40,6 +43,7 @@ import com.slashapps.radary.R;
 import com.slashapps.radary.UserSession.SessionHelper;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import static com.slashapps.radary.Activities.HomeActivity.updateDevice;
@@ -128,6 +132,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        if(HomeActivity.pageIndex==3){
+            map.setMapStyle(MapStyleOptions.loadRawResourceStyle(getContext(), R.raw.map_in_night));
+        }
+
         map.getUiSettings().setMyLocationButtonEnabled(true);
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
