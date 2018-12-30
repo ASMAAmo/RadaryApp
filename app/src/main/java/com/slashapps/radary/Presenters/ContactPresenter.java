@@ -2,7 +2,11 @@ package com.slashapps.radary.Presenters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.view.Gravity;
 
+import com.github.johnpersano.supertoasts.library.Style;
+import com.github.johnpersano.supertoasts.library.SuperActivityToast;
+import com.slashapps.radary.R;
 import com.slashapps.radary.ViewsInterfaces.Contactavaiew;
 import com.slashapps.radary.ViewsInterfaces.LoginView;
 import com.slashapps.radary.WebService.API.Constanturl;
@@ -49,6 +53,23 @@ public class ContactPresenter {
                     dialog.dismiss();
                 if (response.isSuccessful()) {
                     Contactmodel model = response.body();
+                    if (model.getStatus()==true){
+                        SuperActivityToast.create(context
+                                , new Style(), Style.TYPE_BUTTON).setButtonText("Ok")
+                                .setText(context.getResources().getString(R.string.datasent))
+                                .setDuration(Style.DURATION_LONG)
+                                .setFrame(Style.FRAME_LOLLIPOP).setGravity(Gravity.BOTTOM, 0, 0)
+                                .setColor(context.getResources().getColor(R.color.colorPrimary))
+                                .setAnimations(Style.ANIMATIONS_POP).show();
+                    }else {
+                        SuperActivityToast.create(context
+                                , new Style(), Style.TYPE_BUTTON)
+                                .setText(model.getException())
+                                .setDuration(Style.DURATION_LONG)
+                                .setFrame(Style.FRAME_LOLLIPOP).setGravity(Gravity.BOTTOM, 0, 0)
+                                .setColor(context.getResources().getColor(R.color.colorPrimary))
+                                .setAnimations(Style.ANIMATIONS_POP).show();
+                    }
                     view.contactUs(model.getStatus());
                    // view.affFav(model.getStatus());
                     ;

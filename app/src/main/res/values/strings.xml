@@ -8,8 +8,12 @@
     <string name="login">Login</string>
     <string name="logout">Logout</string>
     <string name="about">About Radary</string>
+    <string name="cameraAdded">Camera Added successfully</string>
     <string name="contact">Contact Us</string>
+    <string name="pleaselogin">Please Login first</string>
     <string name="placesname">PlacesName</string>
+    <string name="pickplace">Pick A Place</string>
+    <string name="datasent">Message sent succesfully</string>
     <string name="lang">Language</string>
     <string name="verifcationcodesent">Code sent to mail </string>
     <string name="newpass">Activation key</string>

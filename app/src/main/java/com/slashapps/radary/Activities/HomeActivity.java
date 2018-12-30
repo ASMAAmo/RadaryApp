@@ -68,20 +68,20 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
             case HOME:
                 myToolbar.setVisibility(View.VISIBLE);
                 title.setText(this.getResources().getString(R.string.home));
-                transaction.replace(R.id.content, new HomeFragment());
+                transaction.replace(R.id.content, new HomeFragment()).addToBackStack("0");
                 transaction.commit();
                 pageIndex = 0;
                 break;
             case MYLOCATION:
                 myToolbar.setVisibility(View.VISIBLE);
                 title.setText(this.getResources().getString(R.string.mylocation));
-                transaction.replace(R.id.content, new AddedLocationsFragment());
+                transaction.replace(R.id.content, new AddedLocationsFragment()).addToBackStack("0");
                 transaction.commit();
                 pageIndex = 1;
                 break;
             case ADDCAMERA:
                 myToolbar.setVisibility(View.GONE);
-                transaction.replace(R.id.content, new AddCamFragment());
+                transaction.replace(R.id.content, new AddCamFragment()).addToBackStack("0");
                 transaction.commit();
                 pageIndex = 2;
                 break;
@@ -89,14 +89,14 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
                 pageIndex = 3;
                 myToolbar.setVisibility(View.VISIBLE);
                 title.setText(this.getResources().getString(R.string.nightmode));
-                transaction.replace(R.id.content, new HomeFragment());
+                transaction.replace(R.id.content, new HomeFragment()).addToBackStack("0");
                 transaction.commit();
                 break;
 
             case MOREPAGE:
                 myToolbar.setVisibility(View.VISIBLE);
                 title.setText(this.getResources().getString(R.string.more));
-                transaction.replace(R.id.content, new MoreFragment());
+                transaction.replace(R.id.content, new MoreFragment()).addToBackStack("0");
                 transaction.commit();
                 pageIndex = 4;
                 break;
@@ -197,7 +197,10 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
     public static void registerDevice(Context context,Object data){
         FireBaseDataBaseHelper.registerCurrentDevice(SessionHelper.getDeviceId(context),data);
     }
-
+// add cam on real time DB
+public static void addCam(Context context,Object data){
+    FireBaseDataBaseHelper.registerCurrentDevice(SessionHelper.getDeviceId(context),data);
+}
     //Update device on real time data base
     public static void updateDevice(Context context, Map data){
         FireBaseDataBaseHelper.updateDeviceInfo(SessionHelper.getDeviceId(context),data);

@@ -3,6 +3,7 @@ package com.slashapps.radary.WebService.API;
 import com.slashapps.radary.WebService.Models.Contactmodel;
 import com.slashapps.radary.WebService.Models.ForgetModel;
 import com.slashapps.radary.WebService.Models.LoginModel;
+import com.slashapps.radary.WebService.Models.MyPlaces;
 import com.slashapps.radary.WebService.Models.Registermodel;
 import com.slashapps.radary.WebService.Models.aboutmodel;
 
@@ -33,4 +34,7 @@ public interface Router {
     // reset
     @POST("api/v1/auth/reset")
     Call<ForgetModel> resetPass(@Body Object data);
+    // get places
+    @POST("api/v1/camera/my")
+    Call<MyPlaces> getMyplaces(@Body Object data);
 }

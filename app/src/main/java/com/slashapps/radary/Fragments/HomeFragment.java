@@ -132,6 +132,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        // set night mode
         if(HomeActivity.pageIndex==3){
             map.setMapStyle(MapStyleOptions.loadRawResourceStyle(getContext(), R.raw.map_in_night));
         }
