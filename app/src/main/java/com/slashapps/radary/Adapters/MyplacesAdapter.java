@@ -18,6 +18,7 @@ import com.slashapps.radary.R;
 import com.slashapps.radary.WebService.Models.Datum;
 import com.slashapps.radary.WebService.Models.MyPlaces;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 
@@ -30,18 +31,11 @@ public class MyplacesAdapter extends RecyclerView.Adapter<MyplacesAdapter.ViewHo
     OnItemClickListener onItemClickListener;
     public static int num;
     Context context;
-    List<Datum> places_list;
-    boolean ischecked = false;
-    Button btncall;
-    String planiid;
-
-    public static String pdfpath = "https://zajelme.com/";
-    public String url = "http://fahmney.com/";
-    public String delegateId, userid, serviceid, quat;
-    //Add book url to this link and test it
+    List<MyPlaces> places_list;
 
 
-    public MyplacesAdapter(Context context, List<Datum> places_list) {
+
+    public MyplacesAdapter(Context context, List<MyPlaces> places_list) {
         this.context = context;
         this.places_list = places_list;
 
@@ -60,9 +54,18 @@ public class MyplacesAdapter extends RecyclerView.Adapter<MyplacesAdapter.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         //animate(holder);
-        final Datum faqModel = places_list.get(position);
-        holder.lat_long_tv.setText(""+ faqModel.getLatitude()+" ,"+ faqModel.getLongitude());
-holder.place_name_tv.setText(faqModel.getType());
+        final MyPlaces faqModel = places_list.get(position);
+        holder.lat_long_tv.setText(new DecimalFormat("##.#####").format(Double.parseDouble(faqModel.getLat()))+" ,"+ new DecimalFormat("##.#####").format(Double.parseDouble(faqModel.getLng())));
+        switch (faqModel.getCamTypeId()){
+            case "1" :{
+                holder.place_name_tv.setText(context.getResources().getString(R.string.trafficcam));
+                break;
+            }
+            case "2" :{
+                holder.place_name_tv.setText(context.getResources().getString(R.string.securityambush));
+                break;
+            }
+        }
 
     }
 
@@ -77,17 +80,16 @@ holder.place_name_tv.setText(faqModel.getType());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout linall;
+
         View mView;
         TextView lat_long_tv, place_name_tv;
-        ;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
             place_name_tv = (TextView) itemView.findViewById(R.id.place_name_tv);
             lat_long_tv = (TextView) itemView.findViewById(R.id.lat_long_tv);
-            // linall=(LinearLayout)itemView.findViewById(R.id.linall);
+
         }
 
         public void animate(RecyclerView.ViewHolder viewHolder) {

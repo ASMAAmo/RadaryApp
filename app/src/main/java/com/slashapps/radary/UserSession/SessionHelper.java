@@ -29,6 +29,7 @@ public class SessionHelper {
 
     static final String USER_SESSION="user_session";
     static final String NOTIFICATIONS_TOKEN="notifications_token";
+    static final String DEVICE_ID="device_id";
 
 
     static SharedPreferences getSharedPreferences(Context ctx) {
@@ -58,25 +59,46 @@ public class SessionHelper {
     }
 
 
+    //Check if user is Login or not
+    public static Boolean isLogin(Context context){
+       if(getUserSession(context).getUserToken()==null)
+           return false;
+       else
+           return true;
+    }
+
+
+
     //Clear User session on logout
     public static void clearSession(Context context){
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(USER_SESSION, null);
+        editor.remove(USER_SESSION);
         editor.commit();
     }
 
 
 
-
     //Get Device Id
-    public static String getDeviceId(Context context) {
+    public static void runGetDeviceId(Context context) {
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             Log.e("Device Id","No permission");
         }
         final TelephonyManager tm = (TelephonyManager) context.getSystemService(context.TELEPHONY_SERVICE);
-        return  "" + tm.getDeviceId();
+        setDeviceId(context,"" + tm.getDeviceId());
     }
 
+
+    //Set Device Id
+    public static void setDeviceId(Context context,String deviceId){
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString(DEVICE_ID, deviceId);
+        editor.commit();
+    }
+
+    //Get Device Id from Prefs
+    public static String getDeviceId(Context context) {
+       return getSharedPreferences(context).getString(DEVICE_ID, null);
+    }
 
     //Store Notifications Token
     public static void setNotificationsToken(Context context,String token){

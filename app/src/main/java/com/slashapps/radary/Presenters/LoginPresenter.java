@@ -2,21 +2,22 @@ package com.slashapps.radary.Presenters;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.Gravity;
-import android.widget.Toast;
 
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperActivityToast;
 import com.slashapps.radary.R;
 import com.slashapps.radary.ViewsInterfaces.LoginView;
-import com.slashapps.radary.ViewsInterfaces.RegisterView;
 import com.slashapps.radary.WebService.API.Constanturl;
 import com.slashapps.radary.WebService.API.Router;
-import com.slashapps.radary.WebService.Models.Contactmodel;
 import com.slashapps.radary.WebService.Models.ForgetModel;
 import com.slashapps.radary.WebService.Models.LoginModel;
-import com.slashapps.radary.WebService.Models.Registermodel;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.HashMap;
 
 import cc.cloudist.acplibrary.ACProgressConstant;
@@ -55,23 +56,22 @@ public class LoginPresenter {
                 if (dialog.isShowing())
                     dialog.dismiss();
                 if (response.isSuccessful()) {
-                    LoginModel model = response.body();
-                    view.login(model.getData());
-                   // view.affFav(model.getStatus());
-                    ;
-                    // contactview.getContacts(model.getAbout());
-                    // view.getProductdetails(model.getService());
+                    if(response.body().getStatus()){
+                        view.login(response.body().getData());
+                    }else {
+                        view.onError(response.body().getException());
+                    }
+
                 } else {
-
-
+                    view.onError(context.getResources().getString(R.string.notlogin));
                 }
-
             }
 
             @Override
             public void onFailure(Call<LoginModel> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
+                view.onError(t.getMessage());
             }
         });
     }

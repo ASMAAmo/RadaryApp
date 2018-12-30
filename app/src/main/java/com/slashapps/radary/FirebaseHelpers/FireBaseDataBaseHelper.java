@@ -25,16 +25,11 @@ import java.util.Map;
  */
 
 public class FireBaseDataBaseHelper {
-public static Context context;
+
     public static final String DEVICES = "devices";
     public static final String Cams = "Cams";
 
-    public FireBaseDataBaseHelper(){
 
-    }
-    public FireBaseDataBaseHelper(Context context){
-        this.context=context;
-    }
     //This to assign new device
     public static void registerCurrentDevice (String deviceId,Object data){
         FirebaseDatabase.getInstance().getReference().child(DEVICES).child(deviceId).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -47,30 +42,39 @@ public static Context context;
         });
     }
 
-    public static void  addCam(Object data) {
-        FirebaseDatabase.getInstance().getReference().child(Cams).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+    public static void  addCam(Object data, final Context context) {
+        //This two lines do this
+        DatabaseReference cams_push = FireBaseDataBaseHelper.getRootRef().child("Cams").push();
+        //This to get this code and store it in var
+        String pushKey=cams_push.getKey();
+        FirebaseDatabase.getInstance().getReference().child(Cams).child(pushKey).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(!task.isSuccessful()){
                     Log.e("Database err" , task.getException().getMessage());
-                    /*SuperActivityToast.create(context
-                            , new Style(), Style.TYPE_BUTTON).setButtonText("Ok")
+                   SuperActivityToast.create(context
+                            , new Style(), Style.TYPE_BUTTON).setButtonText(context.getString(R.string.ok))
                             .setText(task.getException().getMessage())
                             .setDuration(Style.DURATION_LONG)
                             .setFrame(Style.FRAME_LOLLIPOP).setGravity(Gravity.BOTTOM, 0, 0)
                             .setColor(context.getResources().getColor(R.color.colorPrimary))
-                            .setAnimations(Style.ANIMATIONS_POP).show();*/
+                            .setAnimations(Style.ANIMATIONS_POP).show();
                 }else {
-                   /* SuperActivityToast.create(context
-                            , new Style(), Style.TYPE_BUTTON).setButtonText("Ok")
+                   SuperActivityToast.create(context
+                            , new Style(), Style.TYPE_BUTTON).setButtonText(context.getString(R.string.ok))
                             .setText(context.getResources().getString(R.string.cameraAdded))
                             .setDuration(Style.DURATION_LONG)
                             .setFrame(Style.FRAME_LOLLIPOP).setGravity(Gravity.BOTTOM, 0, 0)
                             .setColor(context.getResources().getColor(R.color.colorPrimary))
-                            .setAnimations(Style.ANIMATIONS_POP).show();*/
+                            .setAnimations(Style.ANIMATIONS_POP).show();
                 }
             }
         });
+    }
+
+    //Get All Cams
+    public static DatabaseReference getAllCams (){
+        return   FirebaseDatabase.getInstance().getReference().child(Cams);
     }
 
     //This to assign new device
@@ -89,6 +93,11 @@ public static Context context;
     //Get Device data by id
     public static DatabaseReference getCurrentDeviceById (String deviceId){
         return   FirebaseDatabase.getInstance().getReference().child(DEVICES).child(deviceId);
+    }
+
+    //get Root ref
+    public static DatabaseReference getRootRef (){
+        return   FirebaseDatabase.getInstance().getReference();
     }
 
 

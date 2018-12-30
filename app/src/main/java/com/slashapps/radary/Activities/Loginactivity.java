@@ -4,9 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
@@ -17,8 +16,6 @@ import android.widget.Toast;
 
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperActivityToast;
-import com.slashapps.radary.ConstantClasss.Prefs;
-import com.slashapps.radary.Fragments.AddedLocationsFragment;
 import com.slashapps.radary.Presenters.LoginPresenter;
 import com.slashapps.radary.R;
 import com.slashapps.radary.UserSession.SessionHelper;
@@ -32,7 +29,6 @@ public class Loginactivity extends BaseActivity implements View.OnClickListener,
     LoginPresenter presenter;
     Dialog dialog, resetdialog;
     TextView txt_forgetpass;
-    Prefs myprefs;
     String flag;
 
     @Override
@@ -41,16 +37,7 @@ public class Loginactivity extends BaseActivity implements View.OnClickListener,
         setContentView(R.layout.activity_loginactivity);
         findViewid();
         flag = "";
-        myprefs = new Prefs();
         presenter = new LoginPresenter(this, Loginactivity.this);
-       /* if (flag.equals("1")){
-            AddedLocationsFragment fragment = new AddedLocationsFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.fragment_container, fragment);
-            transaction.commit();
-        }else {
-
-        }*/
 
     }
 
@@ -93,10 +80,6 @@ public class Loginactivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public void login(Data_login data_login) {
-        int userid = data_login.getUserId();
-        String token = data_login.getUserToken();
-        myprefs.set_Int_value("user_id",userid,this);
-        myprefs.setDefaults("token",token,this);
         SessionHelper.setUserSession(this, data_login);
         finish();
     }
@@ -158,6 +141,11 @@ public class Loginactivity extends BaseActivity implements View.OnClickListener,
 
     }
 
+    @Override
+    public void onError(String err) {
+        Snackbar.make(findViewById(android.R.id.content), err, Snackbar.LENGTH_LONG).show();
+    }
+
     public void showComumicationDialogereset(Activity activity) {
         resetdialog = new Dialog(activity);
         resetdialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -167,9 +155,7 @@ public class Loginactivity extends BaseActivity implements View.OnClickListener,
         final EditText edpass = (EditText) resetdialog.findViewById(R.id.ed_pass);
         final EditText ed_newpass = (EditText) resetdialog.findViewById(R.id.ed_newpass);
         com.andexert.library.RippleView send = (com.andexert.library.RippleView) resetdialog.findViewById(R.id.rel_send);
-        // t1.setText(getResources().getString(R.string.bookadded));
         resetdialog.show();
-        //
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

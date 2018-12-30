@@ -59,4 +59,10 @@
     <string name="title_activity_cam_location" translatable="false">Map</string>
     <string name="select_cam_location">Select Cam Location</string>
     <string name="required">Required</string>
+    <string name="choselocation">Choose location and Camera type</string>
+    <string name="ok">Ok</string>
+    <string name="camtype">Camera Type</string>
+    <string name="trafficcam">Traffic Camera</string>
+    <string name="securityambush">Security ambush</string>
+    <string name="notlogin">Login Not Success</string>
 </resources>

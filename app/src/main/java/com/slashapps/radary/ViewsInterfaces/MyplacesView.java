@@ -1,6 +1,7 @@
 package com.slashapps.radary.ViewsInterfaces;
 
 import com.slashapps.radary.WebService.Models.Datum;
+import com.slashapps.radary.WebService.Models.MyPlaces;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,5 +11,6 @@ import java.util.List;
  */
 
 public interface MyplacesView {
-    public void getMyplaces(List<Datum> data);
+     void getMyplaces(List<MyPlaces> data);
+     void onError(String err);
 }

@@ -10,60 +10,40 @@ import java.util.List;
  */
 
 public class MyPlaces {
-    @SerializedName("apiVersion")
-    @Expose
-    private String apiVersion;
-    @SerializedName("status")
-    @Expose
-    private Boolean status;
-    @SerializedName("Exception")
-    @Expose
-    private String exception;
-    @SerializedName("total_date")
-    @Expose
-    private Integer totalDate;
-    @SerializedName("data")
-    @Expose
-    private List<Datum> data = null;
+   private String lat;
+   private String lng;
+   private String camTypeId;
+   private String user_token;
 
-    public String getApiVersion() {
-        return apiVersion;
+    public String getLat() {
+        return lat;
     }
 
-    public void setApiVersion(String apiVersion) {
-        this.apiVersion = apiVersion;
+    public void setLat(String lat) {
+        this.lat = lat;
     }
 
-    public Boolean getStatus() {
-        return status;
+    public String getLng() {
+        return lng;
     }
 
-    public void setStatus(Boolean status) {
-        this.status = status;
+    public void setLng(String lng) {
+        this.lng = lng;
     }
 
-    public String getException() {
-        return exception;
+    public String getCamTypeId() {
+        return camTypeId;
     }
 
-    public void setException(String exception) {
-        this.exception = exception;
+    public void setCamTypeId(String camTypeId) {
+        this.camTypeId = camTypeId;
     }
 
-    public Integer getTotalDate() {
-        return totalDate;
+    public String getUser_token() {
+        return user_token;
     }
 
-    public void setTotalDate(Integer totalDate) {
-        this.totalDate = totalDate;
+    public void setUser_token(String user_token) {
+        this.user_token = user_token;
     }
-
-    public List<Datum> getData() {
-        return data;
-    }
-
-    public void setData(List<Datum> data) {
-        this.data = data;
-    }
-
 }

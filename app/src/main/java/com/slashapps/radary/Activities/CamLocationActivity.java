@@ -92,11 +92,9 @@ public class CamLocationActivity extends BaseActivity implements OnMapReadyCallb
        int view =v.getId();
        switch (view){
            case R.id.rel_select_location :
-
                HomeActivity.camLat=currentLatLng.latitude+"";
                HomeActivity.camLng=currentLatLng.longitude+"";
                CamLocationActivity.this.finish();
-             //  Toast.makeText(CamLocationActivity.this,currentLatLng.latitude+" "+currentLatLng.longitude,Toast.LENGTH_LONG).show();
                break;
        }
 

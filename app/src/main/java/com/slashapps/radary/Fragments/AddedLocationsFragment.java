@@ -16,8 +16,6 @@ import android.widget.Toast;
 
 import com.slashapps.radary.Activities.Loginactivity;
 import com.slashapps.radary.Adapters.MyplacesAdapter;
-import com.slashapps.radary.Adapters.PlacesAdapter;
-import com.slashapps.radary.ConstantClasss.Prefs;
 import com.slashapps.radary.Presenters.MyplacesPresenter;
 import com.slashapps.radary.R;
 import com.slashapps.radary.UserSession.SessionHelper;
@@ -25,19 +23,13 @@ import com.slashapps.radary.ViewsInterfaces.MyplacesView;
 import com.slashapps.radary.WebService.Models.Datum;
 import com.slashapps.radary.WebService.Models.MyPlaces;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import static java.security.AccessController.getContext;
 
 public class AddedLocationsFragment extends Fragment implements MyplacesView {
 
 MyplacesPresenter presenter;
    private RecyclerView placesList;
    private TextView emptyFlag;
-
-    List<MyPlaces> places_list;
-Prefs myPrefs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,39 +44,34 @@ Prefs myPrefs;
         super.onViewCreated(view, savedInstanceState);
         findViewById(view);
         presenter = new MyplacesPresenter(getActivity(),AddedLocationsFragment.this);
-        myPrefs = new Prefs();
-        if (myPrefs.getDefaults("token",getActivity()).equals("")){
-            Toast.makeText(getActivity(),getResources().getString(R.string.pleaselogin),Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(getActivity(),Loginactivity.class);
-            intent.putExtra("flg","1");
-            startActivity(intent);
-        }else {
-            presenter.getMyplaces(myPrefs.getDefaults("token",getActivity()),"0","100");
-
+        presenter.getMyplaces();
         }
 
-    }
+
+
+
 
     void findViewById(View view){
-
         placesList=view.findViewById(R.id.added_places_list);
-
-       // placesList.setAdapter(new MyplacesAdapter();
         emptyFlag=view.findViewById(R.id.empty_flag_tv);
         emptyFlag.setVisibility(View.GONE);
     }
 
     @Override
-    public void getMyplaces(List<Datum> data) {
+    public void getMyplaces(List<MyPlaces> data) {
         if (data.size()==0){
-
+            emptyFlag.setVisibility(View.VISIBLE);
         }else {
-
+            emptyFlag.setVisibility(View.GONE);
             placesList.setHasFixedSize(true);
             MyplacesAdapter adapter = new MyplacesAdapter(getActivity(),data);
             placesList.setLayoutManager(new LinearLayoutManager(getContext()));
-            // placesList.setLayoutManager(new LinearLayoutManager(getActivity()));
             placesList.setAdapter(adapter);
         }
+    }
+
+    @Override
+    public void onError(String err) {
+        Toast.makeText(getContext(),err,Toast.LENGTH_LONG).show();
     }
 }

@@ -126,6 +126,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         Map<String,String> deviceInfo =new HashMap();
         deviceInfo.put("Lat",location.getLatitude()+"");
         deviceInfo.put("Long",location.getLongitude()+"");
+        deviceInfo.put("NotificationsToken",SessionHelper.getNotificationsToken(mFusedLocationProviderClient.getApplicationContext()));
+        deviceInfo.put("OS","Android "+ Build.MODEL + Build.MANUFACTURER +" Ver : "+ Build.VERSION.RELEASE);
         updateDevice(mFusedLocationProviderClient.getApplicationContext(),deviceInfo);
     }
 
@@ -171,6 +173,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
                                 Map<String,String> deviceInfo =new HashMap();
                                 deviceInfo.put("Lat",location.getLatitude()+"");
                                 deviceInfo.put("Long",location.getLongitude()+"");
+                                deviceInfo.put("NotificationsToken",SessionHelper.getNotificationsToken(mFusedLocationProviderClient.getApplicationContext()));
+                                deviceInfo.put("OS","Android "+ Build.MODEL + Build.MANUFACTURER +" Ver : "+ Build.VERSION.RELEASE);
                                 updateDevice(mFusedLocationProviderClient.getApplicationContext(),deviceInfo);
                             }
 

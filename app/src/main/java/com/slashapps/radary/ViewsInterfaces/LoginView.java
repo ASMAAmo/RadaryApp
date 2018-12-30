@@ -9,7 +9,13 @@ import retrofit2.http.Body;
  */
 
 public interface LoginView {
-    public void login(Data_login data_login);
-    public void forgetPass(boolean status);
-    public void resetPass(boolean status);
+    void login(Data_login data_login);
+    void forgetPass(boolean status);
+    void resetPass(boolean status);
+
+
+    void onError(String err);
+
+
+
 }
