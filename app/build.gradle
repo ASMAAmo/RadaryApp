@@ -15,21 +15,21 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
-    signingConfigs {
-        release {
-            storeFile file("F:/Ali/Eng Ali/My Freelance working/RadaryKey/RadaryKeyStore.jks")
-            storePassword "123456"
-            keyAlias "Radary"
-            keyPassword "123456"
-
-        }
-    }
+//    signingConfigs {
+//        release {
+//            storeFile file("F:/Ali/Eng Ali/My Freelance working/RadaryKey/RadaryKeyStore.jks")
+//            storePassword "123456"
+//            keyAlias "Radary"
+//            keyPassword "123456"
+//
+//        }
+//    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            debuggable true
-            signingConfig signingConfigs.release
+//            debuggable true
+//            signingConfig signingConfigs.release
         }
     }
 }
@@ -46,6 +46,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:27.1.1'
     compile 'com.android.support:design:27.1.1'
     implementation 'com.google.firebase:firebase-core:11.0.4'
+    compile 'com.github.johnpersano:supertoasts:2.0'
     compile 'com.github.johnpersano:supertoasts:2.0'
     compile 'cc.cloudist.acplibrary:library:1.2.1'
     implementation 'com.google.firebase:firebase-auth:11.0.4'

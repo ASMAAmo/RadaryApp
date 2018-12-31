@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
@@ -30,19 +32,26 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.slashapps.radary.Activities.HomeActivity;
 import com.slashapps.radary.FirebaseHelpers.FireBaseDataBaseHelper;
+import com.slashapps.radary.Presenters.AllCamsPresenter;
 import com.slashapps.radary.R;
 import com.slashapps.radary.UserSession.SessionHelper;
+import com.slashapps.radary.ViewsInterfaces.AllCamsView;
+import com.slashapps.radary.WebService.Models.MyPlaces;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -50,7 +59,7 @@ import static com.slashapps.radary.Activities.HomeActivity.updateDevice;
 import static java.security.AccessController.getContext;
 
 
-public class HomeFragment extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
+public class HomeFragment extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener ,AllCamsView{
     View v;
     public static GoogleMap map;
     GoogleApiClient mpiclients;
@@ -58,7 +67,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
     LocationRequest mLocationrequest;
     GeoFire geoFire;
     private FusedLocationProviderClient mFusedLocationProviderClient;
-
+    AllCamsPresenter presenter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,10 +83,13 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         v = inflater.inflate(R.layout.fragment_home, container, false);
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("path/to/geofire");
         geoFire = new GeoFire(ref);
+        presenter=new AllCamsPresenter(getActivity(),HomeFragment.this);
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
+        //
+        presenter.getMyplaces();
         // Inflate the layout for this fragment
         return v;
 
@@ -88,8 +100,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
     @Override
     public void onConnected(@Nullable Bundle bundle) {
         mLocationrequest = new LocationRequest();
-        mLocationrequest.setInterval(1000);
-        mLocationrequest.setFastestInterval(1000);
+        mLocationrequest.setInterval(60000);
+        mLocationrequest.setFastestInterval(60000);
         mLocationrequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -129,6 +141,9 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         deviceInfo.put("NotificationsToken",SessionHelper.getNotificationsToken(mFusedLocationProviderClient.getApplicationContext()));
         deviceInfo.put("OS","Android "+ Build.MODEL + Build.MANUFACTURER +" Ver : "+ Build.VERSION.RELEASE);
         updateDevice(mFusedLocationProviderClient.getApplicationContext(),deviceInfo);
+
+        //Invoke service with every location check
+       // presenter.getMyplaces();
     }
 
     @Override
@@ -168,7 +183,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
                                 LatLng currentLatLng = new LatLng(location.getLatitude(),
                                         location.getLongitude());
                                 CameraUpdate update = CameraUpdateFactory.newLatLngZoom(currentLatLng,
-                                        15);
+                                        5);
                                 map.moveCamera(update);
                                 Map<String,String> deviceInfo =new HashMap();
                                 deviceInfo.put("Lat",location.getLatitude()+"");
@@ -186,7 +201,42 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
             Log.e("Exception: %s", e.getMessage());
         }
     }
+    private void getAllcams(){
+
+    }
 
 
+    @Override
+    public void getAllCams(List<MyPlaces> data) {
 
+        //We will work here
+        for (int i=0;i<data.size();i++){
+            if (data.get(i).getCamTypeId().equals("1")){
+
+                LatLng latLng = new LatLng(Double.parseDouble(data.get(i).getLat()),Double.parseDouble( data.get(i).getLng()));
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(latLng);
+                markerOptions.title("Current Position");
+            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.place_ico));
+                markerOptions.getPosition();
+                map.addMarker(markerOptions);
+
+            }else {
+                LatLng latLng = new LatLng(Double.parseDouble(data.get(i).getLat()),Double.parseDouble( data.get(i).getLng()));
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(latLng);
+                markerOptions.title("Current Position");
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.user_ico));
+                markerOptions.getPosition();
+                map.addMarker(markerOptions);
+            }
+        }
+
+
+    }
+
+    @Override
+    public void onError(String err) {
+
+    }
 }
