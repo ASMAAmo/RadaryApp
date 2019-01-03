@@ -11,14 +11,18 @@
         android:layout_width="match_parent"
         android:background="@color/grey"
         android:layout_height="50dp">
-        <android.support.v7.widget.SearchView
+        <AutoCompleteTextView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
-            android:layout_margin="3dp"
+            android:layout_margin="2dp"
+            android:textSize="13sp"
+           android:padding="5dp"
+            android:textColor="@color/darkgrey"
+            android:hint="@string/search"
             android:background="@drawable/border_shapwite"
             android:layout_height="match_parent"
-            app:queryHint="@string/search">
-        </android.support.v7.widget.SearchView>
+          >
+        </AutoCompleteTextView>
     </RelativeLayout>
     <fragment
         xmlns:map="http://schemas.android.com/apk/res-auto"

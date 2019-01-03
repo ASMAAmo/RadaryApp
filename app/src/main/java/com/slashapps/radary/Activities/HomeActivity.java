@@ -26,6 +26,9 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.MapView;
 import com.slashapps.radary.BuildConfig;
 import com.slashapps.radary.Components.BottomNavigation;
@@ -41,7 +44,7 @@ import com.slashapps.radary.UserSession.SessionHelper;
 import java.util.HashMap;
 import java.util.Map;
 
-public class HomeActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends BaseActivity implements BottomNavigationView.OnNavigationItemSelectedListener ,GoogleApiClient.OnConnectionFailedListener{
     private static final int REQUEST_READ_PHONE_STATE=5;
     private BottomNavigation navigation;
     private static final int HOME = 0;
@@ -54,6 +57,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
     public static String camLng="";
     private TextView title;
     public static Toolbar myToolbar;
+  public static   GoogleApiClient googleclient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,11 +68,34 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         navigation = findViewById(R.id.navigation);
         title = findViewById(R.id.title);
         navigation.setSelectedItemId(R.id.navigation_home);
-
+///
+        googleclient = new GoogleApiClient
+                .Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
+                .enableAutoManage(HomeActivity.this,this)
+                .build();
         Log.e("Test Notification Token",SessionHelper.getNotificationsToken(HomeActivity.this));
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (googleclient != null && googleclient.isConnected()) {
+            googleclient.stopAutoManage(HomeActivity.this);
+            googleclient.disconnect();
+        }
 
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (googleclient != null && googleclient.isConnected()) {
+            googleclient.stopAutoManage(HomeActivity.this);
+            googleclient.disconnect();
+        }
+    }
 
     private void switchToPage(int page) {
         FragmentTransaction transaction = getTransaction();
@@ -252,5 +279,8 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
     }
 
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
 }
