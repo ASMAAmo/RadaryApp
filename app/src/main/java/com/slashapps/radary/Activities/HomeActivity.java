@@ -78,7 +78,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
         Log.e("Test Notification Token",SessionHelper.getNotificationsToken(HomeActivity.this));
     }
 
-    @Override
+   /* @Override
     protected void onPause() {
         super.onPause();
         if (googleclient != null && googleclient.isConnected()) {
@@ -86,7 +86,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
             googleclient.disconnect();
         }
 
-    }
+    }*/
 
     @Override
     public void onStop() {

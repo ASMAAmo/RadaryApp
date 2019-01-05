@@ -367,7 +367,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.position(latLng);
                 markerOptions.title("Current Position");
-            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.place_ico));
+            markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_markeroffice));
                 markerOptions.getPosition();
                 map.addMarker(markerOptions);
 
@@ -376,7 +376,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.position(latLng);
                 markerOptions.title("Current Position");
-                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.user_ico));
+                markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_markeroffice));
                 markerOptions.getPosition();
                 map.addMarker(markerOptions);
             }
