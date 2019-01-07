@@ -62,5 +62,6 @@
     <string name="trafficcam">كاميرا مروريه</string>
     <string name="securityambush">" نقطه تفتيش"</string>
     <string name="notlogin">فشل تسجيل الدخول</string>
+    <string name="pending">إنتظار</string>
 
 </resources>

@@ -65,4 +65,5 @@
     <string name="trafficcam">Traffic Camera</string>
     <string name="securityambush">Security ambush</string>
     <string name="notlogin">Login Not Success</string>
+    <string name="pending">Pending</string>
 </resources>

@@ -19,7 +19,7 @@ public class LoginModel {
     private String exception;
     @SerializedName("data")
     @Expose
-    private Data_login data;
+    private Data data;
 
     public String getApiVersion() {
         return apiVersion;
@@ -45,11 +45,11 @@ public class LoginModel {
         this.exception = exception;
     }
 
-    public Data_login getData() {
+    public Data getData() {
         return data;
     }
 
-    public void setData(Data_login data) {
+    public void setData(Data data) {
         this.data = data;
     }
 }

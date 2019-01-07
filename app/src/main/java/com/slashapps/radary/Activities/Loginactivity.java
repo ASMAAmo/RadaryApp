@@ -20,7 +20,7 @@ import com.slashapps.radary.Presenters.LoginPresenter;
 import com.slashapps.radary.R;
 import com.slashapps.radary.UserSession.SessionHelper;
 import com.slashapps.radary.ViewsInterfaces.LoginView;
-import com.slashapps.radary.WebService.Models.Data_login;
+import com.slashapps.radary.WebService.Models.Data;
 
 public class Loginactivity extends BaseActivity implements View.OnClickListener, LoginView {
     com.andexert.library.RippleView ripple_register, ripple_login;
@@ -79,8 +79,8 @@ public class Loginactivity extends BaseActivity implements View.OnClickListener,
     }
 
     @Override
-    public void login(Data_login data_login) {
-        SessionHelper.setUserSession(this, data_login);
+    public void login(Data data_) {
+        SessionHelper.setUserSession(this, data_);
         finish();
     }
 
@@ -118,9 +118,6 @@ public class Loginactivity extends BaseActivity implements View.OnClickListener,
 
             }
         });
-        // aboutPresenter.about();
-        //
-        //
     }
 
     @Override

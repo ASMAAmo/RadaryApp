@@ -56,10 +56,12 @@ public class MyplacesPresenter {
                 List<MyPlaces>myPlaces=new ArrayList<>();
                 for(DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
                     //Get user cams by his  id
-                    if(dataSnapshot1.child("user_token").getValue().toString().equals(SessionHelper.getUserSession(context).getUserId().toString())){
+                    if(dataSnapshot1.child("user_token").getValue().toString().equals(SessionHelper.getUserSession(context).getUserId().toString())&&
+                            dataSnapshot1.child("Active").getValue().toString().equals("0")){
                         MyPlaces place =new MyPlaces();
                         place.setLat(dataSnapshot1.child("Lat").getValue().toString());
                         place.setLng(dataSnapshot1.child("Long").getValue().toString());
+                        place.setActive(dataSnapshot1.child("Active").getValue().toString());
                         place.setCamTypeId(dataSnapshot1.child("camType_id").getValue().toString());
                         place.setUser_token(dataSnapshot1.child("user_token").getValue().toString());
                         myPlaces.add(place);

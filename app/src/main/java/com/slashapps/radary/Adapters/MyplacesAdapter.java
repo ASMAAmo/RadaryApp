@@ -55,6 +55,12 @@ public class MyplacesAdapter extends RecyclerView.Adapter<MyplacesAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         //animate(holder);
         final MyPlaces faqModel = places_list.get(position);
+        switch (faqModel.getActive()+""){
+            case "0" :{
+                holder.status_tv.setText(context.getResources().getString(R.string.pending));
+                break;
+            }
+        }
         holder.lat_long_tv.setText(new DecimalFormat("##.#####").format(Double.parseDouble(faqModel.getLat()))+" ,"+ new DecimalFormat("##.#####").format(Double.parseDouble(faqModel.getLng())));
         switch (faqModel.getCamTypeId()){
             case "1" :{
@@ -66,6 +72,8 @@ public class MyplacesAdapter extends RecyclerView.Adapter<MyplacesAdapter.ViewHo
                 break;
             }
         }
+
+
 
     }
 
@@ -82,13 +90,15 @@ public class MyplacesAdapter extends RecyclerView.Adapter<MyplacesAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         View mView;
-        TextView lat_long_tv, place_name_tv;
+        TextView lat_long_tv, place_name_tv , status_tv;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
             place_name_tv = (TextView) itemView.findViewById(R.id.place_name_tv);
             lat_long_tv = (TextView) itemView.findViewById(R.id.lat_long_tv);
+            status_tv=(TextView) itemView.findViewById(R.id.status);
+
 
         }
 

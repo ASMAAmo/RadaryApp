@@ -14,6 +14,7 @@ public class MyPlaces {
    private String lng;
    private String camTypeId;
    private String user_token;
+   private String Active;
 
     public String getLat() {
         return lat;
@@ -45,5 +46,13 @@ public class MyPlaces {
 
     public void setUser_token(String user_token) {
         this.user_token = user_token;
+    }
+
+    public String getActive() {
+        return Active;
+    }
+
+    public void setActive(String active) {
+        Active = active;
     }
 }

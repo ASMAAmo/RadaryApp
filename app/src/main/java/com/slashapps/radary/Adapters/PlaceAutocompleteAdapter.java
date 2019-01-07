@@ -1,7 +1,11 @@
 package com.slashapps.radary.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Geocoder;
+import android.os.AsyncTask;
 import android.text.style.CharacterStyle;
 import android.text.style.StyleSpan;
 import android.util.Log;
@@ -21,9 +25,18 @@ import com.google.android.gms.location.places.AutocompleteFilter;
 import com.google.android.gms.location.places.AutocompletePrediction;
 import com.google.android.gms.location.places.AutocompletePredictionBuffer;
 import com.google.android.gms.location.places.Places;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -178,7 +191,7 @@ public class PlaceAutocompleteAdapter  extends ArrayAdapter<AutocompletePredicti
      * @see Places#GEO_DATA_API#getAutocomplete(CharSequence)
      * @see AutocompletePrediction#freeze()
      */
-    private ArrayList<AutocompletePrediction> getAutocomplete(CharSequence constraint) {
+     ArrayList<AutocompletePrediction> getAutocomplete(CharSequence constraint) {
         if (mGoogleApiClient.isConnected()) {
             Log.i(TAG, "Starting autocomplete query for: " + constraint);
 
@@ -207,11 +220,15 @@ public class PlaceAutocompleteAdapter  extends ArrayAdapter<AutocompletePredicti
             Log.i(TAG, "Query completed. Received " + autocompletePredictions.getCount()
                     + " predictions.");
 
+
             // Freeze the results immutable representation that can be stored safely.
             return DataBufferUtils.freezeAndClose(autocompletePredictions);
         }
         Log.e(TAG, "Google API client is not connected for autocomplete query.");
         return null;
     }
+
+
+
 
 }

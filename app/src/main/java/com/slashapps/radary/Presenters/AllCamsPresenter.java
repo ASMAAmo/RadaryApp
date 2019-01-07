@@ -53,6 +53,7 @@ public class AllCamsPresenter {
                         place.setLat(dataSnapshot1.child("Lat").getValue().toString());
                         place.setLng(dataSnapshot1.child("Long").getValue().toString());
                         place.setCamTypeId(dataSnapshot1.child("camType_id").getValue().toString());
+                        place.setActive(dataSnapshot1.child("Active").getValue().toString());
                         place.setUser_token(dataSnapshot1.child("user_token").getValue().toString());
                         myPlaces.add(place);
                 }

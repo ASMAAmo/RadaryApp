@@ -9,16 +9,11 @@ import android.support.v4.app.ActivityCompat;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
-import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.google.android.gms.iid.InstanceID;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.slashapps.radary.R;
-import com.slashapps.radary.WebService.Models.Data_login;
+import com.slashapps.radary.WebService.Models.Data;
 
 import java.lang.reflect.Type;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by Eng Ali on 12/27/2018.
@@ -38,24 +33,24 @@ public class SessionHelper {
 
 
     //Store User info or his session
-    public static void setUserSession(Context context,Data_login data_login){
+    public static void setUserSession(Context context,Data data_){
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
         Gson gson = new Gson();
-        String json = gson.toJson(data_login);
+        String json = gson.toJson(data_);
         editor.putString(USER_SESSION, json);
         editor.commit();
     }
 
     //Get Current user session
-    public static Data_login getUserSession(Context context){
+    public static Data getUserSession(Context context){
         String json= getSharedPreferences(context).getString(USER_SESSION, "");
-        Data_login data_login=new Data_login();
+        Data data_ =new Data();
         if(!json.isEmpty()) {
-            Type type = new TypeToken<Data_login>() {}.getType();
+            Type type = new TypeToken<Data>() {}.getType();
             Gson gson = new Gson();
-            data_login= gson.fromJson(json, type);
+            data_ = gson.fromJson(json, type);
         }
-        return data_login;
+        return data_;
     }
 
 

@@ -10,8 +10,9 @@
         android:id="@+id/place_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="false"
+        android:layout_alignBaseline="@+id/status"
+        android:layout_alignBottom="@+id/status"
+        android:layout_toStartOf="@+id/status"
         android:gravity="center"
         android:padding="5dp"
         android:text="@string/placesname"
@@ -33,7 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/place_name_tv"
-        android:background="@color/grey"/>
+        android:background="@color/grey"
+        android:id="@+id/textView" />
 
     <TextView
         android:id="@+id/lat_long_tv"
@@ -45,4 +47,16 @@
         android:text="30.25558 , 31,5588"
         android:textAlignment="viewStart"
         android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/lat_long_tv"
+        android:layout_alignBottom="@+id/lat_long_tv"
+        android:layout_alignParentEnd="true"
+        android:padding="5dp"
+        android:text="TextView"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold" />
 </RelativeLayout>

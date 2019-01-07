@@ -53,6 +53,9 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
     private static final int NIGHTMODE = 3;
     private static final int MOREPAGE=4;
     public static int pageIndex = 0;
+    public static String placeName="";
+    public static Double placeLat=0.0;
+    public static Double placeLang=0.0;
     public static String camLat="";
     public static String camLng="";
     private TextView title;

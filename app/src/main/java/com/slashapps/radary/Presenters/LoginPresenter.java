@@ -71,7 +71,7 @@ public class LoginPresenter {
             public void onFailure(Call<LoginModel> call, Throwable t) {
                 if (dialog.isShowing())
                     dialog.dismiss();
-                view.onError(t.getMessage());
+                view.onError(context.getResources().getString(R.string.notlogin));
             }
         });
     }
