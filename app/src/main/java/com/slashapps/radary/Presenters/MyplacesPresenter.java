@@ -49,7 +49,7 @@ public class MyplacesPresenter {
         dialog.show();
 
 
-       // //Get All cams
+        //Get All cams
         FireBaseDataBaseHelper.getAllCams().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
