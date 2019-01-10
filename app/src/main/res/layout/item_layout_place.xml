@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/place_layout"
     android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_alignParentTop="true"
+    android:id="@+id/relall"
+    android:layout_width="wrap_content"
     android:layout_height="50dp">
+
 
     <TextView
         android:id="@+id/place_name_tv"
@@ -45,6 +51,7 @@
         android:layout_toStartOf="@+id/place_name_tv"
         android:gravity="fill_vertical"
         android:text="30.25558 , 31,5588"
+        android:layout_centerVertical="true"
         android:textAlignment="viewStart"
         android:textSize="13sp" />
 
@@ -53,10 +60,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/lat_long_tv"
+        android:layout_centerVertical="true"
         android:layout_alignBottom="@+id/lat_long_tv"
         android:layout_alignParentEnd="true"
-        android:padding="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="3dp"
         android:text="TextView"
+        android:textSize="12sp"
         android:textColor="@color/colorAccent"
         android:textStyle="bold" />
+
+</RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/grey"
+        android:layout_below="@+id/relall"
+        android:layout_height="1dp" />
 </RelativeLayout>

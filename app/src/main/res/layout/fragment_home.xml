@@ -10,21 +10,30 @@
         android:id="@+id/relsearch"
         android:layout_width="match_parent"
         android:background="@color/grey"
-        android:layout_height="50dp">
+        android:layout_height="70dp">
 
         <AutoCompleteTextView
             android:id="@+id/search_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
             android:layout_margin="2dp"
             android:background="@drawable/border_shapwite"
             android:drawablePadding="10dp"
-            android:drawableStart="?android:attr/actionModeWebSearchDrawable"
             android:drawableTint="@color/blue"
             android:hint="@string/search"
             android:padding="5dp"
             android:textColor="@color/darkgrey"
             android:textSize="13sp"></AutoCompleteTextView>
+        <TextView
+            android:id="@+id/txtspeed"
+            android:textSize="14sp"
+            android:layout_below="@+id/search_view"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/bluelogin"
+            android:text="speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
     <fragment
         xmlns:map="http://schemas.android.com/apk/res-auto"

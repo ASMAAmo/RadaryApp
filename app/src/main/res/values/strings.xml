@@ -10,6 +10,7 @@
     <string name="about">About Radary</string>
     <string name="cameraAdded">Camera Added successfully</string>
     <string name="contact">Contact Us</string>
+    <string name="speed">Current speed</string>
     <string name="pleaselogin">Please Login first</string>
     <string name="placesname">PlacesName</string>
     <string name="pickplace">Pick A Place</string>

@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.provider.SyncStateContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -30,6 +31,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
@@ -96,6 +98,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
     public static GoogleMap map;
     GoogleApiClient mpiclients;
     Location mlastLocation;
+    TextView txtspeed;
+    Float speed;
     LocationRequest mLocationrequest;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     AllCamsPresenter presenter;
@@ -116,6 +120,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_home, container, false);
         ed_search =  v.findViewById(R.id.search_view);
+        txtspeed=(TextView)v.findViewById(R.id.txtspeed);
+        speed=0.0f;
         presenter = new AllCamsPresenter(getActivity(), HomeFragment.this);
         presenter.getMyplaces();
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
@@ -152,19 +158,26 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onLocationChanged(Location location) {
         mlastLocation= location;
         LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
         map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         // Zoom in the Google Map
+         speed= location.getSpeed();
+        Log.e("speed",speed+"");
+        Toast.makeText(getActivity(),speed.toString(),Toast.LENGTH_LONG).show();
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
         Map<String,String> deviceInfo =new HashMap();
         deviceInfo.put("Lat",location.getLatitude()+"");
         deviceInfo.put("Long",location.getLongitude()+"");
+        deviceInfo.put("speed",location.getSpeed()+"");
         deviceInfo.put("NotificationsToken",SessionHelper.getNotificationsToken(mFusedLocationProviderClient.getApplicationContext()));
         deviceInfo.put("OS","Android "+ Build.MODEL + Build.MANUFACTURER +" Ver : "+ Build.VERSION.RELEASE);
         updateDevice(mFusedLocationProviderClient.getApplicationContext(),deviceInfo);
+        txtspeed.setText(getResources().getString(R.string.speed)+" : "+ speed.toString()+" KMPH");
+
     }
 
     @Override
@@ -182,6 +195,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         map.setMyLocationEnabled(true);
         buildGoogleapiClient();
         getDeviceLocation();
+        txtspeed.setText(speed.toString());
     }
 
     protected synchronized void buildGoogleapiClient() {
@@ -209,6 +223,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
                             Map<String,String> deviceInfo =new HashMap();
                             deviceInfo.put("Lat",location.getLatitude()+"");
                             deviceInfo.put("Long",location.getLongitude()+"");
+                            deviceInfo.put("speed",location.getSpeed()+"");
                             deviceInfo.put("NotificationsToken",SessionHelper.getNotificationsToken(mFusedLocationProviderClient.getApplicationContext()));
                             deviceInfo.put("OS","Android "+ Build.MODEL + Build.MANUFACTURER +" Ver : "+ Build.VERSION.RELEASE);
                             updateDevice(mFusedLocationProviderClient.getApplicationContext(),deviceInfo);
@@ -242,7 +257,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(latLng);
                     markerOptions.title("Current Position");
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_markeroffice));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_police));
                     markerOptions.getPosition();
                     map.addMarker(markerOptions);
                 }
