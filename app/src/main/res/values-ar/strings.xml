@@ -47,6 +47,7 @@
     <string name="pleaselogin">قم بتسجيل الدخول اولا</string>
     <string name="cameraAdded">تم إضافه الكاميرا بنجاح</string>
     <string name="speed">السرعه الحاليه</string>
+    <string name="agree">اوافق علي كافه الشروط</string>
     <string name="passchanged">تم تغيير كلمه المرور</string>
     <string name="verifcationcodesent">تم إرسال رمز التحقق عبر البريد الإلكتروني </string>
     <string name="sorry_you_seem_to_be_offline">نأسف .. يبدو أنك غير متصل بالإنترنت</string>

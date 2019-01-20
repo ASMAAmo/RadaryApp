@@ -16,6 +16,10 @@ import android.widget.Toast;
 
 import com.github.johnpersano.supertoasts.library.Style;
 import com.github.johnpersano.supertoasts.library.SuperActivityToast;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.slashapps.radary.Presenters.LoginPresenter;
 import com.slashapps.radary.R;
 import com.slashapps.radary.UserSession.SessionHelper;
@@ -30,15 +34,37 @@ public class Loginactivity extends BaseActivity implements View.OnClickListener,
     Dialog dialog, resetdialog;
     TextView txt_forgetpass;
     String flag;
+    InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginactivity);
         findViewid();
+        MobileAds.initialize(this,
+                "ca-app-pub-3940256099942544~3347511713");
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        AdRequest adRequest = new AdRequest.Builder()
+                .build();
+
+        // Load ads into Interstitial Ads
+        mInterstitialAd.loadAd(adRequest);
+
+        mInterstitialAd.setAdListener(new AdListener() {
+            public void onAdLoaded() {
+                showInterstitial();
+            }
+        });
+
         flag = "";
         presenter = new LoginPresenter(this, Loginactivity.this);
 
+    }
+    private void showInterstitial() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        }
     }
 
     private void findViewid() {

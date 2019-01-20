@@ -11,7 +11,11 @@
         <item name="android:fontFamily">@font/droidkufi_regular</item>
         <item name="fontFamily">@font/droidkufi_regular</item>
     </style>
-
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorControlNormal">@color/blue</item>
+        <item name="colorControlActivated">@color/yello</item>
+    </style>
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.ActionBar">
         <!-- Customize color of navigation drawer icon and back arrow -->
         <item name="colorControlNormal">@color/white</item>

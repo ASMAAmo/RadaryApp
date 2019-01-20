@@ -9,6 +9,9 @@ import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.slashapps.radary.Adapters.SliderAdapter;
 import com.slashapps.radary.R;
 import android.support.v4.view.ViewPager;
@@ -24,12 +27,25 @@ public class SplashActivity extends BaseActivity {
     LinearLayout skipBtn;
     List<Integer> images;
     List<String> textes;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+       /* AdRequest request = new AdRequest.Builder()
+                .addTestDevice("33BE2250B43518CCDA7DE426D04EE231")  // An example device ID
+                .build();
+       // request.isTestDevice(this)
+        //MobileAds.initialize(this, "ca-app-pub-3940256099942544/1033173712");
+        //
+        MobileAds.initialize(this,
+               getResources().getString( R.string.interstitial_ad_unit_id));
 
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId( getResources().getString( R.string.interstitial_ad_unit_id)
+                );
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());*/
         viewPager=findViewById(R.id.viewPager);
         indicator=findViewById(R.id.indicator);
         skipBtn=findViewById(R.id.skip_btn);
@@ -55,7 +71,7 @@ public class SplashActivity extends BaseActivity {
         skipBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SplashActivity.this,HomeActivity.class));
+                startActivity(new Intent(SplashActivity.this,PolicyActivity.class));
                 SplashActivity.this.finish();
             }
         });

@@ -44,10 +44,7 @@
             android:value="AIzaSyCS47HXWnYxTXM0xYepVc1Yd27S2xxfGfc" />
 
         <activity android:name=".Activities.Settingactivity" />
-        <activity
-            android:name=".Activities.CamLocationActivity"></activity>
-
-
+        <activity android:name=".Activities.CamLocationActivity" />
 
         <!-- Firebase Notifications -->
         <service android:name=".FirebaseHelpers.MyFirebaseMessagingService">
@@ -63,6 +60,22 @@
         <!-- ./Firebase Notifications -->
 
 
+        <!-- This meta-data tag is required to use Google Play Services. -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-3940256099942544/6300978111" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".Activities.Addmobs"
+            android:label="@string/title_activity_addmobs" /> <!-- Include the AdActivity configChanges and theme. -->
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+            android:theme="@android:style/Theme.Translucent" />
+        <activity android:name=".Activities.PolicyActivity"></activity>
     </application>
 
 </manifest>

@@ -147,6 +147,7 @@ public class HomeActivity extends BaseActivity implements BottomNavigationView.O
             case MOREPAGE:
                 myToolbar.setVisibility(View.VISIBLE);
                 title.setText(this.getResources().getString(R.string.more));
+               // startActivity(new Intent(this,Addmobs.class));
                 transaction.replace(R.id.content, new MoreFragment()).addToBackStack("0");
                 transaction.commit();
                 pageIndex = 4;

@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -21,6 +22,7 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -30,11 +32,17 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.geofire.GeoFire;
 import com.firebase.geofire.GeoLocation;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
@@ -65,11 +73,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.slashapps.radary.Activities.HomeActivity;
 import com.slashapps.radary.Adapters.PlaceAutocompleteAdapter;
+import com.slashapps.radary.ConstantClasss.GPSManager;
 import com.slashapps.radary.FirebaseHelpers.FireBaseDataBaseHelper;
 import com.slashapps.radary.Presenters.AllCamsPresenter;
 import com.slashapps.radary.R;
 import com.slashapps.radary.UserSession.SessionHelper;
 import com.slashapps.radary.ViewsInterfaces.AllCamsView;
+import com.slashapps.radary.ViewsInterfaces.GPSCallback;
 import com.slashapps.radary.WebService.Models.MyPlaces;
 
 import org.json.JSONArray;
@@ -78,6 +88,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -88,12 +99,13 @@ import java.util.Map;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
+import static android.content.Context.LOCATION_SERVICE;
 import static com.slashapps.radary.Activities.HomeActivity.googleclient;
 import static com.slashapps.radary.Activities.HomeActivity.updateDevice;
 import static java.security.AccessController.getContext;
 
 
-public class HomeFragment extends Fragment implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener ,AllCamsView {
+public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener ,AllCamsView {
     View v;
     public static GoogleMap map;
     GoogleApiClient mpiclients;
@@ -105,8 +117,13 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
     AllCamsPresenter presenter;
     AutoCompleteTextView ed_search;
     private PlaceAutocompleteAdapter adapter;
-
-
+    com.google.android.gms.ads.AdView mAdView;
+    InterstitialAd mInterstitialAd;
+    private GPSManager gpsManager = null;
+    Boolean isGPSEnabled=false;
+    LocationManager locationManager;
+    double currentSpeed,kmphSpeed;
+    ImageView icdot;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,8 +137,26 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_home, container, false);
         ed_search =  v.findViewById(R.id.search_view);
+        icdot=(ImageView)v.findViewById(R.id.icdot);
         txtspeed=(TextView)v.findViewById(R.id.txtspeed);
+        mAdView = v.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        AdView adView = new AdView(getActivity());
+        adView.setAdSize(AdSize.BANNER);
+        adView.setAdUnitId("\n" +
+                "ca-app-pub-3940256099942544/6300978111");
         speed=0.0f;
+        try {
+            if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
+        //
+
         presenter = new AllCamsPresenter(getActivity(), HomeFragment.this);
         presenter.getMyplaces();
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
@@ -130,9 +165,21 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         }
 
         initViews();
+        getCurrentSpeed();
         return v;
     }
-
+    public void getCurrentSpeed(){
+       // txtview.setText(getString(R.string.info));
+        locationManager = (LocationManager)getActivity().getSystemService(LOCATION_SERVICE);
+        gpsManager = new GPSManager(getActivity());
+        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if(isGPSEnabled) {
+            gpsManager.startListening(getActivity());
+            gpsManager.setGPSCallback(this);
+        } else {
+            gpsManager.showSettingsAlert();
+        }
+    }
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
@@ -176,7 +223,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         deviceInfo.put("NotificationsToken",SessionHelper.getNotificationsToken(mFusedLocationProviderClient.getApplicationContext()));
         deviceInfo.put("OS","Android "+ Build.MODEL + Build.MANUFACTURER +" Ver : "+ Build.VERSION.RELEASE);
         updateDevice(mFusedLocationProviderClient.getApplicationContext(),deviceInfo);
-        txtspeed.setText(getResources().getString(R.string.speed)+" : "+ speed.toString()+" KMPH");
+       // getCurrentSpeed();
+        txtspeed.setText(speed.toString());
 
     }
 
@@ -314,9 +362,19 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         });
 
     }
+    public static double round(double unrounded, int precision, int roundingMode) {
+        BigDecimal bd = new BigDecimal(unrounded);
+        BigDecimal rounded = bd.setScale(precision, roundingMode);
+        return rounded.doubleValue();
+    }
+    @Override
+    public void onGPSUpdate(Location location) {
+        speed = location.getSpeed();
+        currentSpeed = round(speed,3, BigDecimal.ROUND_HALF_UP);
+        kmphSpeed = round((currentSpeed*3.6),3,BigDecimal.ROUND_HALF_UP);
+       // txtspeed.setText( String.valueOf(kmphSpeed));
 
-
-
+    }
 
 
     //Get Lat long from Address
@@ -330,6 +388,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
             this.place = place;
 
         }
+
 
         @Override
         protected void onCancelled() {
@@ -405,4 +464,9 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback, Google
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
 }
