@@ -139,6 +139,7 @@ public class AddCamFragment extends Fragment implements View.OnClickListener {
                     cam_info.put("Lat", HomeActivity.camLat + "");
                     cam_info.put("Long", HomeActivity.camLng + "");
                     cam_info.put("user_token", SessionHelper.getUserSession(getContext()).getUserId());
+                    cam_info.put("speed","100");
                     cam_info.put("Active","0");
                     cam_info.put("camType_id",type_id);
                     HomeActivity.addCam(cam_info,getContext());

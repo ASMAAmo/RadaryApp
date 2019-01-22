@@ -214,7 +214,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
         // Zoom in the Google Map
          speed= location.getSpeed();
         Log.e("speed",speed+"");
-        Toast.makeText(getActivity(),speed.toString(),Toast.LENGTH_LONG).show();
+     //   Toast.makeText(getActivity(),speed.toString(),Toast.LENGTH_LONG).show();
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
         Map<String,String> deviceInfo =new HashMap();
         deviceInfo.put("Lat",location.getLatitude()+"");
@@ -297,7 +297,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(latLng);
                     markerOptions.title("Current Position");
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_markeroffice));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.location_green));
                     markerOptions.getPosition();
                     map.addMarker(markerOptions);
                 } else {
@@ -305,7 +305,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(latLng);
                     markerOptions.title("Current Position");
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_police));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.location_yello));
                     markerOptions.getPosition();
                     map.addMarker(markerOptions);
                 }
