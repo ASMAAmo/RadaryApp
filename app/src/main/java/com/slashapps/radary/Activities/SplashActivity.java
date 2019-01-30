@@ -13,6 +13,7 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.slashapps.radary.Adapters.SliderAdapter;
+import com.slashapps.radary.ConstantClasss.Prefs;
 import com.slashapps.radary.R;
 import android.support.v4.view.ViewPager;
 import java.util.ArrayList;
@@ -27,12 +28,17 @@ public class SplashActivity extends BaseActivity {
     LinearLayout skipBtn;
     List<Integer> images;
     List<String> textes;
+    String checked;
+    Prefs myprefs;
     private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        myprefs= new Prefs();
+        checked="";
+        checked= myprefs.getDefaults("checked",SplashActivity.this);
        /* AdRequest request = new AdRequest.Builder()
                 .addTestDevice("33BE2250B43518CCDA7DE426D04EE231")  // An example device ID
                 .build();
@@ -71,8 +77,14 @@ public class SplashActivity extends BaseActivity {
         skipBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(SplashActivity.this,PolicyActivity.class));
-                SplashActivity.this.finish();
+                if (checked.equals("true")){
+                    startActivity(new Intent(SplashActivity.this,HomeActivity.class));
+                    SplashActivity.this.finish();
+                }else {
+                    startActivity(new Intent(SplashActivity.this,PolicyActivity.class));
+                    SplashActivity.this.finish();
+                }
+
             }
         });
     }

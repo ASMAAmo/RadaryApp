@@ -214,7 +214,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
         // Zoom in the Google Map
          speed= location.getSpeed();
         Log.e("speed",speed+"");
-        Toast.makeText(getActivity(),speed.toString(),Toast.LENGTH_LONG).show();
+       // Toast.makeText(getActivity(),speed.toString(),Toast.LENGTH_LONG).show();
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
         Map<String,String> deviceInfo =new HashMap();
         deviceInfo.put("Lat",location.getLatitude()+"");

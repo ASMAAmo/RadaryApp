@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context="com.slashapps.radary.Activities.PolicyActivity">
+    <RelativeLayout
+        android:id="@+id/relback"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:layout_height="50dp">
+        <include layout="@layout/custom_toolbar"
+            android:id="@+id/toolbar"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+            <ConstantClasss.Custom_Textview
+                android:layout_width="wrap_content"
+                android:text="@string/about"
+                android:layout_centerInParent="true"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:layout_height="wrap_content" />
+        </include>
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/imglogo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/relback"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/logooo" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        android:layout_below="@+id/imglogo"
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+
+        android:layout_margin="15dp"
+        android:background="@drawable/border_shaplogin"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/txt_policy"
+            android:layout_margin="15dp"
+            android:textSize="13sp"
+            android:textColor="@color/zatony"
+            android:minHeight="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:id="@+id/chechagree"
+            android:layout_below="@+id/txt_policy"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/agree"
+            android:textColor="@color/bluelogin"
+            android:textSize="13sp"
+            style="@style/MyCheckBox"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

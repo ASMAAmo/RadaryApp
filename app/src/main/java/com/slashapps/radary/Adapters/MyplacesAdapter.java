@@ -3,6 +3,7 @@ package com.slashapps.radary.Adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,9 +12,11 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.slashapps.radary.Activities.Placesmap;
 import com.slashapps.radary.R;
 import com.slashapps.radary.WebService.Models.Datum;
 import com.slashapps.radary.WebService.Models.MyPlaces;
@@ -72,6 +75,18 @@ public class MyplacesAdapter extends RecyclerView.Adapter<MyplacesAdapter.ViewHo
                 break;
             }
         }
+        //
+        holder.relall.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,Placesmap.class);
+                intent.putExtra("lat",faqModel.getLat());
+                intent.putExtra("lang",faqModel.getLng());
+                intent.putExtra("camId",faqModel.getCamTypeId());
+                Log.e("latlang",faqModel.getLat()+" "+faqModel.getLng()+"");
+                context.startActivity(intent);
+            }
+        });
 
 
 
@@ -91,10 +106,11 @@ public class MyplacesAdapter extends RecyclerView.Adapter<MyplacesAdapter.ViewHo
 
         View mView;
         TextView lat_long_tv, place_name_tv , status_tv;
-
+RelativeLayout relall;
         public ViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
+            relall=(RelativeLayout)itemView.findViewById(R.id.relall);
             place_name_tv = (TextView) itemView.findViewById(R.id.place_name_tv);
             lat_long_tv = (TextView) itemView.findViewById(R.id.lat_long_tv);
             status_tv=(TextView) itemView.findViewById(R.id.status);
