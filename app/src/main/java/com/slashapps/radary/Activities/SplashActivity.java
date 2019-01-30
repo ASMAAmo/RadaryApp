@@ -67,7 +67,7 @@ public class SplashActivity extends BaseActivity {
         textes.add(getResources().getString(R.string.slide2));
         textes.add(getResources().getString(R.string.addcam));
 
-
+//Test
         viewPager.setAdapter(new SliderAdapter(this, images, textes));
         indicator.setupWithViewPager(viewPager, true);
 
