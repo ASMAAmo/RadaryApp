@@ -34,6 +34,7 @@ public class Placesmap extends AppCompatActivity implements OnMapReadyCallback,V
         lang= intent.getStringExtra("lang");
         camid=intent.getStringExtra("camId");
         //
+        //
 
     }
 
