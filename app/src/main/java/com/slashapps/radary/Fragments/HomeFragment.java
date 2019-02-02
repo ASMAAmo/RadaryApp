@@ -111,7 +111,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
     GoogleApiClient mpiclients;
     Location mlastLocation;
     TextView txtspeed;
-    Float speed;
+    Float speed,currentspeedd;
     LocationRequest mLocationrequest;
     private FusedLocationProviderClient mFusedLocationProviderClient;
     AllCamsPresenter presenter;
@@ -147,6 +147,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
         adView.setAdUnitId("\n" +
                 "ca-app-pub-3940256099942544/6300978111");
         speed=0.0f;
+        currentspeedd=0.0f;
         try {
             if (ContextCompat.checkSelfPermission(getActivity(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED ) {
                 ActivityCompat.requestPermissions(getActivity(), new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 101);
@@ -165,7 +166,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
         }
 
         initViews();
-        getCurrentSpeed();
+       // getCurrentSpeed();
         return v;
     }
     public void getCurrentSpeed(){
@@ -213,18 +214,19 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
         map.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         // Zoom in the Google Map
          speed= location.getSpeed();
+        currentspeedd=speed;
         Log.e("speed",speed+"");
        // Toast.makeText(getActivity(),speed.toString(),Toast.LENGTH_LONG).show();
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
         Map<String,String> deviceInfo =new HashMap();
         deviceInfo.put("Lat",location.getLatitude()+"");
         deviceInfo.put("Long",location.getLongitude()+"");
-        deviceInfo.put("speed",location.getSpeed()+"");
+        deviceInfo.put("speed",currentspeedd+"");
         deviceInfo.put("NotificationsToken",SessionHelper.getNotificationsToken(mFusedLocationProviderClient.getApplicationContext()));
         deviceInfo.put("OS","Android "+ Build.MODEL + Build.MANUFACTURER +" Ver : "+ Build.VERSION.RELEASE);
         updateDevice(mFusedLocationProviderClient.getApplicationContext(),deviceInfo);
-       // getCurrentSpeed();
-        txtspeed.setText(speed.toString());
+      //  getCurrentSpeed();
+       // txtspeed.setText(speed.toString());
 
     }
 
@@ -243,7 +245,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
         map.setMyLocationEnabled(true);
         buildGoogleapiClient();
         getDeviceLocation();
-        txtspeed.setText(speed.toString());
+        txtspeed.setText(currentspeedd.toString());
     }
 
     protected synchronized void buildGoogleapiClient() {
@@ -271,7 +273,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
                             Map<String,String> deviceInfo =new HashMap();
                             deviceInfo.put("Lat",location.getLatitude()+"");
                             deviceInfo.put("Long",location.getLongitude()+"");
-                            deviceInfo.put("speed",location.getSpeed()+"");
+                            deviceInfo.put("speed",currentspeedd+"");
                             deviceInfo.put("NotificationsToken",SessionHelper.getNotificationsToken(mFusedLocationProviderClient.getApplicationContext()));
                             deviceInfo.put("OS","Android "+ Build.MODEL + Build.MANUFACTURER +" Ver : "+ Build.VERSION.RELEASE);
                             updateDevice(mFusedLocationProviderClient.getApplicationContext(),deviceInfo);
@@ -372,7 +374,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
         speed = location.getSpeed();
         currentSpeed = round(speed,3, BigDecimal.ROUND_HALF_UP);
         kmphSpeed = round((currentSpeed*3.6),3,BigDecimal.ROUND_HALF_UP);
-       // txtspeed.setText( String.valueOf(kmphSpeed));
+        txtspeed.setText( String.valueOf(kmphSpeed));
 
     }
 
