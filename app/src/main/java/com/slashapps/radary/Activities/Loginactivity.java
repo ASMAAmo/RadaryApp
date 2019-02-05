@@ -42,9 +42,10 @@ public class Loginactivity extends BaseActivity implements View.OnClickListener,
         setContentView(R.layout.activity_loginactivity);
         findViewid();
         MobileAds.initialize(this,
-                "ca-app-pub-3940256099942544~3347511713");
+                "\n" +
+                        "ca-app-pub-5159996687624065~4349736953");
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId("ca-app-pub-5159996687624065/2821689408");
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
 

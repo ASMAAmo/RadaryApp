@@ -145,7 +145,8 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
         AdView adView = new AdView(getActivity());
         adView.setAdSize(AdSize.BANNER);
         adView.setAdUnitId("\n" +
-                "ca-app-pub-3940256099942544/6300978111");
+                "\n" +
+                "ca-app-pub-5159996687624065~4349736953");
         speed=0.0f;
         currentspeedd=0.0f;
         try {
@@ -299,7 +300,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(latLng);
                     markerOptions.title("Current Position");
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_markeroffice));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.location_green));
                     markerOptions.getPosition();
                     map.addMarker(markerOptions);
                 } else {
@@ -307,7 +308,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
                     MarkerOptions markerOptions = new MarkerOptions();
                     markerOptions.position(latLng);
                     markerOptions.title("Current Position");
-                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_police));
+                    markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.location_yello));
                     markerOptions.getPosition();
                     map.addMarker(markerOptions);
                 }
