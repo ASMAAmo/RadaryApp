@@ -31,7 +31,7 @@ public class PolicyPresenter {
         this.context = context;
 
     }
-    public void getPolicy() {
+    public void getPolicy(String lang) {
         dialog = new ACProgressFlower.Builder(context)
                 .direction(ACProgressConstant.DIRECT_CLOCKWISE)
                 .themeColor(Color.WHITE)
@@ -39,7 +39,8 @@ public class PolicyPresenter {
         dialog.show();
 
         HashMap input = new HashMap();
-        Constanturl.createService(Router.class).getPolicy().enqueue(new Callback<aboutmodel>() {
+        input.put("lang",lang);
+        Constanturl.createService(Router.class).getPolicy(input).enqueue(new Callback<aboutmodel>() {
             @Override
             public void onResponse(Call<aboutmodel> call, Response<aboutmodel> response) {
                 if (dialog.isShowing())

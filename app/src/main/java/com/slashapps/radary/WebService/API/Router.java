@@ -38,6 +38,6 @@ public interface Router {
     @POST("api/v1/camera/my")
     Call<MyPlaces> getMyplaces(@Body Object data);
     // policy
-    @GET("api/v1/utility/terms")
-    Call<aboutmodel> getPolicy();
+    @POST("api/v1/utility/terms")
+    Call<aboutmodel> getPolicy(@Body Object data);
 }

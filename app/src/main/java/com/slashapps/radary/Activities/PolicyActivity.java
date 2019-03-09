@@ -17,6 +17,7 @@ CheckBox chechagree;
 TextView txt_policy;
     PolicyPresenter presenter;
     Prefs myPrefs;
+    String lang;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +26,7 @@ TextView txt_policy;
         chechagree=(CheckBox)findViewById(R.id.chechagree);
         presenter=new PolicyPresenter(this,PolicyActivity.this);
         txt_policy=(TextView)findViewById(R.id.txt_policy);
-        presenter.getPolicy();
+        presenter.getPolicy(lang);
         //
         chechagree.setOnClickListener(new View.OnClickListener() {
 

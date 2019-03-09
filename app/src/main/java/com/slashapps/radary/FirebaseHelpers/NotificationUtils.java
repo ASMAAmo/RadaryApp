@@ -98,12 +98,12 @@ public class NotificationUtils {
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
 
         inboxStyle.addLine(message);
-
+        Uri sound =Uri.parse("android.resource://com.slashapps.radary/" + R.raw.dangeralarm);
         Notification notification;
         notification = mBuilder.setSmallIcon(icon).setTicker(title).setWhen(0)
 
                 .setContentTitle(title)
-                .setSound(alarmSound)
+                .setSound(sound)
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setContentIntent(resultPendingIntent)
                 .setStyle(inboxStyle)
@@ -123,12 +123,13 @@ public class NotificationUtils {
         bigPictureStyle.setSummaryText(Html.fromHtml(message).toString());
         bigPictureStyle.bigPicture(bitmap);
         Notification notification;
+        Uri sound =Uri.parse("android.resource://com.slashapps.radary/" + R.raw.dangeralarm);
         notification = mBuilder.setSmallIcon(icon).setTicker(title).setWhen(0)
                 .setAutoCancel(true)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setContentIntent(resultPendingIntent)
-                .setSound(alarmSound)
+                .setSound(sound)
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000 })
                 .setStyle(bigPictureStyle)
                 .setWhen(getTimeMilliSec(timeStamp))

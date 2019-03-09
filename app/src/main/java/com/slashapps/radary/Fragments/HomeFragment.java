@@ -167,7 +167,7 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
         }
 
         initViews();
-       // getCurrentSpeed();
+        getCurrentSpeed();
         return v;
     }
     public void getCurrentSpeed(){
@@ -226,8 +226,8 @@ public class HomeFragment extends Fragment implements GPSCallback, OnMapReadyCal
         deviceInfo.put("NotificationsToken",SessionHelper.getNotificationsToken(mFusedLocationProviderClient.getApplicationContext()));
         deviceInfo.put("OS","Android "+ Build.MODEL + Build.MANUFACTURER +" Ver : "+ Build.VERSION.RELEASE);
         updateDevice(mFusedLocationProviderClient.getApplicationContext(),deviceInfo);
-      //  getCurrentSpeed();
-       // txtspeed.setText(speed.toString());
+        getCurrentSpeed();
+        txtspeed.setText(speed.toString());
 
     }
 
