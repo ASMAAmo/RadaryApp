@@ -12,6 +12,7 @@ import android.util.Log;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.slashapps.radary.Activities.HomeActivity;
+import com.slashapps.radary.Dialogs.AlertDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -28,6 +29,13 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+
+        //Fire Notification dialog Alert
+        if(!NotificationUtils.isAppIsInBackground(this)){
+            if(remoteMessage.getNotification()!=null) {
+                new AlertDialog(this, remoteMessage.getNotification().getBody());
+            }
+        }
 
 
         Log.e(TAG, "From: " + remoteMessage.getFrom());
@@ -60,8 +68,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
                 Ringtone r = RingtoneManager.getRingtone(this, alarmSound);
                 r.play();
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -70,6 +76,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Intent pushNotification = new Intent(Config.PUSH_NOTIFICATION);
             pushNotification.putExtra("message", message);
             LocalBroadcastManager.getInstance(this).sendBroadcast(pushNotification);
+
+
 
         }else{
             // If the app is in background, firebase itself handles the notification
