@@ -16,6 +16,8 @@
         android:roundIcon="@drawable/appicon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activities.AlertDialogActivity"
+            android:theme="@style/Theme.AppCompat.Dialog"></activity>
         <activity android:name=".Activities.HomeActivity" />
         <activity android:name=".Activities.BaseActivity" />
         <activity android:name=".Activities.SplashActivity">
@@ -44,9 +46,7 @@
             android:value="AIzaSyCS47HXWnYxTXM0xYepVc1Yd27S2xxfGfc" />
 
         <activity android:name=".Activities.Settingactivity" />
-        <activity android:name=".Activities.CamLocationActivity" />
-
-        <!-- Firebase Notifications -->
+        <activity android:name=".Activities.CamLocationActivity" /> <!-- Firebase Notifications -->
         <service android:name=".FirebaseHelpers.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -56,15 +56,11 @@
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
-        </service>
-        <!-- ./Firebase Notifications -->
-
-
+        </service> <!-- ./Firebase Notifications -->
         <!-- This meta-data tag is required to use Google Play Services. -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="
-ca-app-pub-5159996687624065~4349736953" />
+            android:value=" ca-app-pub-5159996687624065~4349736953" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -77,7 +73,7 @@ ca-app-pub-5159996687624065~4349736953" />
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
         <activity android:name=".Activities.PolicyActivity" />
-        <activity android:name=".Activities.Placesmap"></activity>
+        <activity android:name=".Activities.Placesmap" />
     </application>
 
 </manifest>

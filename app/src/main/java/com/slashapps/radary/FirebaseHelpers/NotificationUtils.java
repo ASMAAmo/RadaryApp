@@ -17,7 +17,6 @@ import android.support.v4.app.NotificationCompat;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Patterns;
-
 import com.slashapps.radary.R;
 
 import java.io.IOException;
@@ -57,7 +56,6 @@ public class NotificationUtils {
 
         // notification icon
         final int icon = R.drawable.cast_ic_notification_small_icon;
-
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         final PendingIntent resultPendingIntent =
                 PendingIntent.getActivity(
@@ -96,7 +94,6 @@ public class NotificationUtils {
     private void showSmallNotification(NotificationCompat.Builder mBuilder, int icon, String title, String message, String timeStamp, PendingIntent resultPendingIntent, Uri alarmSound) {
 
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
-
         inboxStyle.addLine(message);
         Uri sound =Uri.parse("android.resource://com.slashapps.radary/" + R.raw.dangeralarm);
         Notification notification;
