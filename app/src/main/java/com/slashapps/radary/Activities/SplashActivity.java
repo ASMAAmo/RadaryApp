@@ -39,6 +39,14 @@ public class SplashActivity extends BaseActivity {
         myprefs= new Prefs();
         checked="";
         checked= myprefs.getDefaults("checked",SplashActivity.this);
+        if (checked.equals("true")){
+            startActivity(new Intent(SplashActivity.this,HomeActivity.class));
+            SplashActivity.this.finish();
+        }else {
+            startActivity(new Intent(SplashActivity.this,PolicyActivity.class));
+            SplashActivity.this.finish();
+        }
+
        /* AdRequest request = new AdRequest.Builder()
                 .addTestDevice("33BE2250B43518CCDA7DE426D04EE231")  // An example device ID
                 .build();

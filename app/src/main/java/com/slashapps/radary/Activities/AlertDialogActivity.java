@@ -22,7 +22,7 @@ public class AlertDialogActivity extends BaseActivity {
         button=findViewById(R.id.dismiss_bttn);
         messageTv=findViewById(R.id.message);
         messageTv.setText(getIntent().getStringExtra("message_res"));
-        mediaPlayer = MediaPlayer.create(this, R.raw.dangeralarm);
+        mediaPlayer = MediaPlayer.create(this, R.raw.notisound);
         mediaPlayer.setLooping(true);
         mediaPlayer.setVolume(100,100);
         if(!mediaPlayer.isPlaying()){
@@ -34,6 +34,7 @@ public class AlertDialogActivity extends BaseActivity {
             public void onClick(View view) {
                 if(mediaPlayer!=null&&mediaPlayer.isPlaying()){
                     mediaPlayer.stop();
+                   finish();
                 }
                 AlertDialogActivity.this.finish();
             }

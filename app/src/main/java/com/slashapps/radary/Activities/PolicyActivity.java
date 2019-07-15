@@ -17,7 +17,7 @@ CheckBox chechagree;
 TextView txt_policy;
     PolicyPresenter presenter;
     Prefs myPrefs;
-    String lang;
+    String lang,splash;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +27,7 @@ TextView txt_policy;
         presenter=new PolicyPresenter(this,PolicyActivity.this);
         txt_policy=(TextView)findViewById(R.id.txt_policy);
         presenter.getPolicy(lang);
+
         //
         chechagree.setOnClickListener(new View.OnClickListener() {
 
@@ -34,8 +35,10 @@ TextView txt_policy;
             public void onClick(View v) {
                 //is chkIos checked?
                 if (((CheckBox) v).isChecked()) {
-            myPrefs.setDefaults("checked","true",PolicyActivity.this);
-                    startActivity(new Intent(PolicyActivity.this,HomeActivity.class));
+                myPrefs.setDefaults("checked","true",PolicyActivity.this);
+                    //splash="1";
+                   // myPrefs.setDefaults("splash",splash,PolicyActivity.this);
+                    startActivity(new Intent(PolicyActivity.this,SplashActivity.class));
                 }
 
             }

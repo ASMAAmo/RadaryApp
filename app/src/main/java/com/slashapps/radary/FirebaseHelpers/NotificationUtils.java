@@ -95,7 +95,7 @@ public class NotificationUtils {
 
         NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
         inboxStyle.addLine(message);
-        Uri sound =Uri.parse("android.resource://com.slashapps.radary/" + R.raw.dangeralarm);
+        Uri sound =Uri.parse("android.resource://com.slashapps.radary/" + R.raw.notisound);
         Notification notification;
         notification = mBuilder.setSmallIcon(icon).setTicker(title).setWhen(0)
 
@@ -120,7 +120,7 @@ public class NotificationUtils {
         bigPictureStyle.setSummaryText(Html.fromHtml(message).toString());
         bigPictureStyle.bigPicture(bitmap);
         Notification notification;
-        Uri sound =Uri.parse("android.resource://com.slashapps.radary/" + R.raw.dangeralarm);
+        Uri sound =Uri.parse("android.resource://com.slashapps.radary/" + R.raw.notisound);
         notification = mBuilder.setSmallIcon(icon).setTicker(title).setWhen(0)
                 .setAutoCancel(true)
                 .setContentTitle(title)
